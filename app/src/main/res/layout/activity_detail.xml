@@ -1,0 +1,279 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".DetailActivity">
+
+    <androidx.appcompat.widget.Toolbar
+        android:id="@+id/toolbar_detail"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_gravity="top"
+        android:background="@color/accentColor"
+        android:minHeight="?attr/actionBarSize"
+        app:title="Detail"
+        app:titleTextColor="@color/textOrIconColor"
+        android:theme="@style/Theme.Cicknime" />
+
+    <ScrollView
+        android:id="@+id/scroll_view"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_below="@id/toolbar_detail">
+
+        <RelativeLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:paddingHorizontal="14dp"
+            android:paddingVertical="6dp">
+
+            <TextView
+                android:id="@+id/detail"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="@string/detail"
+                android:layout_marginBottom="6dp"
+                style="@style/TextContent.Secondary"/>
+
+            <ImageView
+                android:id="@+id/anime_poster_detail"
+                android:layout_width="160dp"
+                android:layout_height="999dp"
+                android:layout_below="@id/detail"
+                android:scaleType="centerCrop"
+                android:layout_alignBottom="@id/studio_container"
+                android:layout_marginEnd="14dp"
+                android:layout_centerVertical="false"
+                tools:src="@android:color/darker_gray"
+                tools:ignore="ContentDescription">
+            </ImageView>
+
+            <LinearLayout
+                android:id="@+id/title_container"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_toEndOf="@id/anime_poster_detail"
+                android:layout_below="@id/detail"
+                android:layout_marginBottom="6dp"
+                android:orientation="vertical">
+
+                <TextView
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:text="@string/title"
+                    style="@style/TextContent.Tertiary"/>
+
+                <TextView
+                    android:id="@+id/tv_title"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:lineSpacingMultiplier="1.1"
+                    tools:text="@string/lorem_ipsum_dolor_sit_amet"
+                    style="@style/TextContent.SubItem2"/>
+
+            </LinearLayout>
+
+            <LinearLayout
+                android:id="@+id/score_container"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_below="@id/title_container"
+                android:layout_toEndOf="@id/anime_poster_detail"
+                android:layout_marginBottom="6dp"
+                android:orientation="vertical">
+
+                <TextView
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:text="@string/score"
+                    style="@style/TextContent.Tertiary"/>
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginBottom="6dp"
+                    android:orientation="horizontal">
+
+                    <RatingBar
+                        android:id="@+id/score_star_detail"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_gravity="center_vertical"
+                        android:numStars="5"
+                        android:stepSize="0.01"
+                        android:isIndicator="true"
+                        android:layout_marginEnd="12dp"
+                        android:scaleX="1.1"
+                        android:scaleY="1.1"
+                        android:transformPivotX="0dp"
+                        android:transformPivotY="0dp"
+                        android:progressBackgroundTint="@color/secondaryText"
+                        style="?android:attr/ratingBarStyleSmall">
+                    </RatingBar>
+
+                    <TextView
+                        android:id="@+id/tv_score"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:textColor="@color/secondaryText"
+                        tools:text="7.85"/>
+
+                </LinearLayout>
+
+            </LinearLayout>
+
+            <LinearLayout
+                android:id="@+id/status_container"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_below="@id/score_container"
+                android:layout_toEndOf="@id/anime_poster_detail"
+                android:layout_marginBottom="6dp"
+                android:orientation="vertical">
+
+                <TextView
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:text="@string/status"
+                    style="@style/TextContent.Tertiary"/>
+
+                <TextView
+                    android:id="@+id/tv_status"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    tools:text="@string/currently_airing"
+                    style="@style/TextContent.SubItem2"/>
+
+            </LinearLayout>
+
+            <LinearLayout
+                android:id="@+id/duration_container"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_below="@id/status_container"
+                android:layout_toEndOf="@id/anime_poster_detail"
+                android:layout_marginBottom="6dp"
+                android:orientation="vertical">
+
+                <TextView
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:text="@string/duration"
+                    style="@style/TextContent.Tertiary"/>
+
+                <TextView
+                    android:id="@+id/tv_duration"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    tools:text="@string/_24_min_per_ep"
+                    style="@style/TextContent.SubItem2"/>
+
+            </LinearLayout>
+
+            <LinearLayout
+                android:id="@+id/studio_container"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_below="@id/duration_container"
+                android:layout_toEndOf="@id/anime_poster_detail"
+                android:layout_marginBottom="6dp"
+                android:orientation="vertical">
+
+                <TextView
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:text="@string/studios"
+                    style="@style/TextContent.Tertiary"/>
+
+                <TextView
+                    android:id="@+id/tv_studio"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:lineSpacingMultiplier="1.1"
+                    tools:text="@string/comix_wave_production"
+                    style="@style/TextContent.SubItem2"/>
+
+            </LinearLayout>
+
+            <LinearLayout
+                android:id="@+id/genres_container"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_below="@id/anime_poster_detail"
+                android:layout_marginTop="12dp"
+                android:layout_marginBottom="8dp"
+                android:orientation="vertical">
+
+                <TextView
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:text="@string/genres"
+                    style="@style/TextContent.Tertiary"/>
+
+                <TextView
+                    android:id="@+id/tv_genres"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:lineSpacingMultiplier="1.1"
+                    tools:text="@string/action_adventure_super_power_martial_arts_shounen"
+                    style="@style/TextContent.SubItem2"/>
+
+            </LinearLayout>
+
+            <LinearLayout
+                android:id="@+id/synopsis_container"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_below="@id/genres_container"
+                android:layout_marginBottom="12dp"
+                android:orientation="vertical">
+
+                <TextView
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:text="@string/synopsis"
+                    style="@style/TextContent.Tertiary"/>
+
+                <TextView
+                    android:id="@+id/tv_synopsis"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:lineSpacingMultiplier="1.1"
+                    tools:text="@string/synopsis_text"
+                    style="@style/TextContent.SubItem2"/>
+
+            </LinearLayout>
+
+            <RelativeLayout
+                android:id="@+id/suggest_anime"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_below="@id/synopsis_container"
+                android:layout_marginBottom="18dp">
+
+                <TextView
+                    android:id="@+id/see_also"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:text="@string/see_also"
+                    android:layout_marginBottom="6dp"
+                    style="@style/TextContent.Secondary"/>
+
+                <androidx.recyclerview.widget.RecyclerView
+                    android:id="@+id/rv_suggest_anime"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:layout_below="@id/see_also"
+                    android:orientation="horizontal"
+                    tools:listitem="@layout/item_list_suggest_anime" />
+
+            </RelativeLayout>
+
+        </RelativeLayout>
+
+    </ScrollView>
+
+</RelativeLayout>

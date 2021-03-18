@@ -1,0 +1,263 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent">
+
+    <androidx.appcompat.widget.Toolbar
+        android:id="@+id/toolbar_about"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_gravity="top"
+        android:background="@color/accentColor"
+        android:minHeight="?attr/actionBarSize"
+        app:title="About"
+        app:titleMarginStart="0dp"
+        app:titleTextColor="@color/textOrIconColor"
+        android:theme="@style/Theme.Cicknime"/>
+
+    <ScrollView
+        xmlns:tools="http://schemas.android.com/tools"
+        android:id="@+id/profile_activity"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_below="@id/toolbar_about">
+
+        <FrameLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content">
+
+            <ImageView
+                android:paddingBottom="100dp"
+                android:layout_width="match_parent"
+                android:layout_height="250dp"
+                android:adjustViewBounds="true"
+                android:scaleType="centerCrop"
+                android:src="@drawable/splash_screen_manga"
+                tools:ignore="ContentDescription" />
+
+            <RelativeLayout
+                android:layout_marginTop="175dp"
+                android:layout_gravity="bottom"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:paddingVertical="18dp"
+                android:paddingHorizontal="14dp">
+
+                <de.hdodenhof.circleimageview.CircleImageView
+                    android:id="@+id/profile_image"
+                    android:layout_width="120dp"
+                    android:layout_height="120dp"
+                    android:layout_centerHorizontal="false"
+                    android:layout_marginBottom="18dp"
+                    android:src="@drawable/user_picture"
+                    app:civ_border_color="@color/textOrIconColor"
+                    app:civ_border_width="2dp" />
+
+                <LinearLayout
+                    android:id="@+id/biodata"
+                    android:layout_marginBottom="28dp"
+                    android:layout_below="@id/profile_image"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:orientation="vertical">
+
+                    <TextView
+                        style="@style/TextContent.Primary"
+                        android:text="@string/muhammad_fajri_rasid">
+                    </TextView>
+
+                    <TextView
+                        style="@style/TextContent.SubItem1"
+                        android:layout_marginBottom="16dp"
+                        android:text="@string/email">
+                    </TextView>
+
+                    <TextView
+                        style="@style/TextContent.SubItem2"
+                        android:layout_marginBottom="6dp"
+                        android:text="@string/kampus"
+                        android:drawableStart="@drawable/ic_baseline_business_24"
+                        tools:ignore="UseCompatTextViewDrawableXml">
+                    </TextView>
+
+                    <TextView
+                        style="@style/TextContent.SubItem2"
+                        android:layout_marginBottom="6dp"
+                        android:text="@string/tempat_lahir"
+                        android:drawableStart="@drawable/ic_place_black_24dp"
+                        tools:ignore="UseCompatTextViewDrawableXml">
+                    </TextView>
+
+                    <TextView
+                        style="@style/TextContent.SubItem2"
+                        android:text="@string/tanggal_lahir"
+                        android:textColor="@color/secondaryText"
+                        android:drawableStart="@drawable/ic_cake_black_24dp"
+                        tools:ignore="UseCompatTextViewDrawableXml">
+                    </TextView>
+
+                </LinearLayout>
+
+                <RelativeLayout
+                    android:id="@+id/skills"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_below="@id/biodata"
+                    android:layout_marginBottom="28dp">
+
+                    <TextView
+                        style="@style/TextContent.Secondary"
+                        android:id="@+id/skill_title"
+                        android:layout_marginBottom="8dp"
+                        android:text="@string/skills">
+                    </TextView>
+
+                    <androidx.constraintlayout.widget.ConstraintLayout
+                        android:id="@+id/interest_container"
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent"
+                        android:layout_below="@id/skill_title">
+
+                        <TextView
+                            style="@style/TextContent.SubItem3"
+                            android:id="@+id/textView11"
+                            android:drawableStart="@drawable/ic_computer_black_24dp"
+                            android:text="@string/web_developer"
+                            app:layout_constraintStart_toStartOf="parent"
+                            app:layout_constraintTop_toTopOf="parent"
+                            tools:ignore="UseCompatTextViewDrawableXml">
+                        </TextView>
+
+                        <TextView
+                            android:id="@+id/textView13"
+                            style="@style/TextContent.SubItem3"
+                            android:layout_marginStart="35dp"
+                            android:layout_marginEnd="46dp"
+                            android:drawableStart="@drawable/ic_baseline_android_24"
+                            android:text="@string/android_developer"
+                            app:layout_constraintEnd_toEndOf="parent"
+                            app:layout_constraintStart_toEndOf="@+id/textView11"
+                            app:layout_constraintTop_toTopOf="parent"
+                            tools:ignore="UseCompatTextViewDrawableXml">
+                        </TextView>
+
+                        <TextView
+                            style="@style/TextContent.SubItem3"
+                            android:id="@+id/textView12"
+                            android:layout_marginTop="10dp"
+                            android:drawableStart="@drawable/ic_baseline_developer_mode_24"
+                            android:text="@string/flutter_developer"
+                            app:layout_constraintBottom_toBottomOf="parent"
+                            app:layout_constraintStart_toStartOf="parent"
+                            app:layout_constraintTop_toBottomOf="@+id/textView11"
+                            tools:ignore="UseCompatTextViewDrawableXml">
+                        </TextView>
+
+                        <TextView
+                            android:id="@+id/video_editor"
+                            style="@style/TextContent.SubItem3"
+                            android:layout_marginStart="35dp"
+                            android:layout_marginTop="10dp"
+                            android:layout_marginEnd="82dp"
+                            android:drawableStart="@drawable/ic_baseline_videocam_24"
+                            android:text="@string/video_editor"
+                            app:layout_constraintEnd_toEndOf="parent"
+                            app:layout_constraintStart_toEndOf="@+id/textView12"
+                            app:layout_constraintTop_toBottomOf="@+id/textView13"
+                            tools:ignore="UseCompatTextViewDrawableXml">
+                        </TextView>
+
+                    </androidx.constraintlayout.widget.ConstraintLayout>
+
+                </RelativeLayout>
+
+                <RelativeLayout
+                    android:id="@+id/about_me"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_below="@id/skills"
+                    android:layout_marginBottom="28dp">
+
+                    <TextView
+                        style="@style/TextContent.Secondary"
+                        android:id="@+id/about_me_title"
+                        android:layout_marginBottom="8dp"
+                        android:text="@string/about_me">
+                    </TextView>
+
+                    <TextView
+                        style="@style/TextContent.SubItem2"
+                        android:layout_below="@id/about_me_title"
+                        android:text="@string/about_me_text"
+                        android:lineSpacingMultiplier="1.1">
+                    </TextView>
+
+                </RelativeLayout>
+
+                <RelativeLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_below="@id/about_me">
+
+                    <TextView
+                        style="@style/TextContent.Secondary"
+                        android:id="@+id/social_media_title"
+                        android:layout_marginBottom="8dp"
+                        android:text="@string/social_media">
+                    </TextView>
+
+                    <LinearLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_below="@id/social_media_title"
+                        android:orientation="vertical">
+
+                        <TextView
+                            style="@style/TextContent.SubItem2"
+                            android:id="@+id/github"
+                            android:layout_width="match_parent"
+                            android:layout_marginBottom="12dp"
+                            android:drawableStart="@drawable/ic_github"
+                            android:drawablePadding="8dp"
+                            android:gravity="center_vertical"
+                            android:text="@string/github_com_fajri_rasid1st"
+                            tools:ignore="UseCompatTextViewDrawableXml">
+                        </TextView>
+
+                        <TextView
+                            style="@style/TextContent.SubItem2"
+                            android:id="@+id/instagram"
+                            android:layout_width="match_parent"
+                            android:layout_marginBottom="12dp"
+                            android:drawableStart="@drawable/ic_insta"
+                            android:drawablePadding="8dp"
+                            android:gravity="center_vertical"
+                            android:text="@string/instagram_com_fajri_rasid1st"
+                            tools:ignore="UseCompatTextViewDrawableXml">
+                        </TextView>
+
+                        <TextView
+                            style="@style/TextContent.SubItem2"
+                            android:id="@+id/linkedin"
+                            android:layout_width="match_parent"
+                            android:layout_marginBottom="12dp"
+                            android:drawableStart="@drawable/ic_linkedin"
+                            android:drawablePadding="8dp"
+                            android:gravity="center_vertical"
+                            android:text="@string/linkedin_com_in_fajri_rasid_26558114b"
+                            tools:ignore="UseCompatTextViewDrawableXml">
+                        </TextView>
+
+                    </LinearLayout>
+
+                </RelativeLayout>
+
+            </RelativeLayout>
+
+        </FrameLayout>
+
+    </ScrollView>
+
+</RelativeLayout>

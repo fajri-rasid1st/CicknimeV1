@@ -1,0 +1,83 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:padding="14dp"
+    android:elevation="5dp"
+    android:layout_marginVertical="9dp"
+    android:layout_marginHorizontal="14dp"
+    android:background="@drawable/list_bg">
+
+    <de.hdodenhof.circleimageview.CircleImageView
+        android:id="@+id/item_poster"
+        android:layout_width="110dp"
+        android:layout_height="110dp"
+        android:layout_marginEnd="14dp"
+        android:layout_centerVertical="true"
+        tools:src="@android:color/darker_gray" />
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_toEndOf="@id/item_poster"
+        android:orientation="vertical">
+
+        <TextView
+            android:id="@+id/tv_title"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:ellipsize="end"
+            android:fontFamily="@font/poppins_semibold"
+            android:textColor="@color/textOrIconColor"
+            android:textSize="16sp"
+            android:maxLines="2"
+            android:lineSpacingMultiplier="0.8"
+            tools:text="@string/title_of_anime" />
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginBottom="6dp"
+            android:orientation="horizontal">
+
+            <RatingBar
+                android:id="@+id/score_star"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center_vertical"
+                android:numStars="5"
+                android:stepSize="0.01"
+                android:isIndicator="true"
+                android:layout_marginEnd="12dp"
+                android:scaleX="1.1"
+                android:scaleY="1.1"
+                android:transformPivotX="0dp"
+                android:transformPivotY="0dp"
+                android:progressBackgroundTint="@color/secondaryText"
+                style="?android:attr/ratingBarStyleSmall">
+            </RatingBar>
+
+            <TextView
+                android:id="@+id/tv_score"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:textColor="@color/textOrIconColor"
+                tools:text="7.85" />
+
+        </LinearLayout>
+
+        <TextView
+            android:id="@+id/tv_synopsis"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:ellipsize="end"
+            android:fontFamily="@font/poppins"
+            android:textColor="@color/textOrIconColor"
+            android:maxLines="3"
+            tools:text="@string/dummy_text" />
+
+    </LinearLayout>
+
+</RelativeLayout>

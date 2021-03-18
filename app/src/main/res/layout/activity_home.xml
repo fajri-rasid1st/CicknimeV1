@@ -1,0 +1,30 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:id="@+id/activity_main"
+    android:background="@color/textOrIconColor"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent">
+
+    <androidx.recyclerview.widget.RecyclerView
+        android:id="@+id/rv_anime"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_below="@id/toolbar_home"
+        android:layout_marginTop="-2dp"
+        tools:listitem="@layout/item_list_anime" />
+
+    <androidx.appcompat.widget.Toolbar
+        android:id="@+id/toolbar_home"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_gravity="top"
+        android:background="@color/accentColor"
+        android:minHeight="?attr/actionBarSize"
+        app:title="Cicknime"
+        app:titleTextColor="@color/textOrIconColor"
+        android:theme="@style/Theme.Cicknime" />
+
+</RelativeLayout>

@@ -1,0 +1,48 @@
+<resources>
+    <string name="app_name">Cicknime</string>
+    <string name="title_of_anime">Title Of Anime : It Can Be Multiple Line</string>
+    <string name="dummy_text">
+        Lorem ipsum dolor sit amet, consect adipiscing elit. Aenean commodo ligula eget dolor. Aenean massa. Cum sociis natoque penatibus et magnis dis parturient montes.
+    </string>
+    <string name="muhammad_fajri_rasid">Muhammad Fajri Rasid</string>
+    <string name="email">Fajrimuhammad460@gmail.com</string>
+    <string name="tempat_lahir">Masamba, Sulawesi Selatan, Indonesia</string>
+    <string name="kampus">Universitas Hasanuddin</string>
+    <string name="tanggal_lahir">Lahir, 26 Februari 2001</string>
+    <string name="skills">Skills</string>
+    <string name="web_developer">Web Developer</string>
+    <string name="flutter_developer">Flutter Developer</string>
+    <string name="android_developer">Android Developer</string>
+    <string name="video_editor">Video Editor</string>
+    <string name="about_me">About Me</string>
+    <string name="about_me_text">
+        Hai, nama saya <b>Muhammad Fajri Rasid</b>. Saya adalah seorang programer pemula yang tertarik mempelajari web development dan mobile apps development.
+        Hobi saya ngoding, edit video, nonton youtube, main game, lihat asupan meme, dan juga nonton anime.
+        Saat ini saya menempuh pendidikan S1 Sistem Informasi di Universitas Hasanuddin.
+        Saya juga terus mengembangkan skill pemrograman yang saya miliki agar nantinya bisa menjadi seorang programer profesional dan bekerja di perusahaan bidang IT.
+    </string>
+    <string name="social_media">Social Media</string>
+    <string name="github_com_fajri_rasid1st"><u>Github.com/fajri-rasid1st</u></string>
+    <string name="instagram_com_fajri_rasid1st"><u>Instagram.com/fajri_rasid1st</u></string>
+    <string name="linkedin_com_in_fajri_rasid_26558114b"><u>Linkedin.com/in/fajri-rasid-26558114b</u></string>
+    <string name="about">about</string>
+    <string name="title">Title</string>
+    <string name="lorem_ipsum_dolor_sit_amet">Lorem Ipsum Dolor Sit Amet</string>
+    <string name="score">Score</string>
+    <string name="_5_97">5.97</string>
+    <string name="status">Status</string>
+    <string name="currently_airing">Currently Airing</string>
+    <string name="duration">Duration</string>
+    <string name="_24_min_per_ep">24 min. per ep.</string>
+    <string name="comix_wave_production">Comix Wave Production</string>
+    <string name="studios">Studios</string>
+    <string name="genres">Genres</string>
+    <string name="action_adventure_super_power_martial_arts_shounen">Action, Adventure, Super Power, Martial Arts, Shounen</string>
+    <string name="synopsis">Synopsis</string>
+    <string name="synopsis_text">
+        Following the successful end of the Fourth Shinobi World War, Konohagakure has been enjoying a period of peace, prosperity, and extraordinary technological advancement. This is all due to the efforts of the Allied Shinobi Forces and the village\'s Seventh Hokage, Naruto Uzumaki. Now resembling a modern metropolis, Konohagakure has changed, particularly the life of a shinobi. Under the watchful eye of Naruto and his old comrades, a new generation of shinobi has stepped up to learn the ways of the ninja.
+    </string>
+    <string name="scores">Score :</string>
+    <string name="see_also">See Also</string>
+    <string name="detail">Detail</string>
+</resources>
