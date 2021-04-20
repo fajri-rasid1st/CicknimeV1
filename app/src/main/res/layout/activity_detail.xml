@@ -41,8 +41,7 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_marginHorizontal="16dp"
-                android:text="@string/detail"
-                android:textSize="28sp" />
+                android:text="@string/detail" />
 
             <androidx.cardview.widget.CardView
                 android:id="@+id/cv_poster_detail"
@@ -51,7 +50,6 @@
                 android:layout_below="@id/detail"
                 android:layout_alignBottom="@id/studio_container"
                 android:layout_marginHorizontal="16dp"
-                android:layout_marginBottom="16dp"
                 android:backgroundTint="@color/backgroundColor"
                 app:cardCornerRadius="4dp"
                 app:cardElevation="4dp">
@@ -234,6 +232,7 @@
                 android:layout_height="wrap_content"
                 android:layout_below="@id/cv_poster_detail"
                 android:layout_marginHorizontal="16dp"
+                android:layout_marginTop="16dp"
                 android:layout_marginBottom="8dp"
                 android:orientation="vertical">
 
@@ -291,15 +290,16 @@
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:layout_marginHorizontal="16dp"
-                    android:text="@string/see_also"
-                    android:textSize="28sp" />
+                    android:text="@string/see_also" />
 
                 <androidx.recyclerview.widget.RecyclerView
                     android:id="@+id/rv_suggest_anime"
                     android:layout_width="match_parent"
                     android:layout_height="match_parent"
                     android:layout_below="@id/see_also"
+                    android:clipToPadding="false"
                     android:orientation="horizontal"
+                    android:paddingHorizontal="10dp"
                     tools:listitem="@layout/item_list_suggest_anime" />
 
             </RelativeLayout>

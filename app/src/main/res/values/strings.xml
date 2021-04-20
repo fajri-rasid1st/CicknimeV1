@@ -45,4 +45,5 @@
     <string name="scores">Score :</string>
     <string name="see_also">Suggest Anime</string>
     <string name="detail">Detail</string>
+    <string name="top_10_recommendation_anime">Top 10 Recommendation Anime</string>
 </resources>

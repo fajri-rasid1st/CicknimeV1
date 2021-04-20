@@ -22,7 +22,7 @@
     </style>
 
     <style name="TextContent.Secondary">
-        <item name="android:textSize">20sp</item>
+        <item name="android:textSize">28sp</item>
     </style>
 
     <style name="TextContent.Tertiary">
