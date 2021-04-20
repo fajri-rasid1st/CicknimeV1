@@ -1,78 +1,103 @@
 <?xml version="1.0" encoding="utf-8"?>
-<RelativeLayout
-    xmlns:android="http://schemas.android.com/apk/res/android"
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:background="@color/backgroundColor"
     tools:context=".DetailActivity">
 
     <androidx.appcompat.widget.Toolbar
-        android:id="@+id/toolbar_detail"
+        android:id="@+id/tb_detail"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_gravity="top"
         android:background="@color/accentColor"
         android:minHeight="?attr/actionBarSize"
+        android:theme="@style/Theme.Cicknime"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
         app:title="Detail"
-        app:titleTextColor="@color/textOrIconColor"
-        android:theme="@style/Theme.Cicknime" />
+        app:titleTextColor="@color/textOrIconColor" />
 
     <ScrollView
-        android:id="@+id/scroll_view"
+        android:id="@+id/sv_detail"
         android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:layout_below="@id/toolbar_detail">
+        android:layout_height="0dp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/tb_detail">
 
         <RelativeLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:paddingHorizontal="14dp"
-            android:paddingVertical="6dp">
+            android:paddingVertical="12dp">
 
             <TextView
                 android:id="@+id/detail"
+                style="@style/TextContent.Secondary"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
+                android:layout_marginHorizontal="16dp"
                 android:text="@string/detail"
-                android:layout_marginBottom="6dp"
-                style="@style/TextContent.Secondary"/>
+                android:textSize="28sp" />
 
-            <ImageView
-                android:id="@+id/anime_poster_detail"
+            <androidx.cardview.widget.CardView
+                android:id="@+id/cv_poster_detail"
                 android:layout_width="160dp"
                 android:layout_height="999dp"
                 android:layout_below="@id/detail"
-                android:scaleType="centerCrop"
                 android:layout_alignBottom="@id/studio_container"
-                android:layout_marginEnd="14dp"
-                android:layout_centerVertical="false"
-                tools:src="@android:color/darker_gray"
-                tools:ignore="ContentDescription">
-            </ImageView>
+                android:layout_marginHorizontal="16dp"
+                android:layout_marginBottom="16dp"
+                android:backgroundTint="@color/backgroundColor"
+                app:cardCornerRadius="4dp"
+                app:cardElevation="4dp">
+
+                <FrameLayout
+                    android:layout_width="160dp"
+                    android:layout_height="match_parent"
+                    android:layout_centerInParent="true"
+                    android:padding="6dp">
+
+                    <ImageView
+                        android:id="@+id/iv_poster_detail"
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent"
+                        android:layout_gravity="center_horizontal|center_vertical"
+                        android:scaleType="centerCrop"
+                        tools:ignore="ContentDescription"
+                        tools:src="@android:color/darker_gray" />
+
+                </FrameLayout>
+
+            </androidx.cardview.widget.CardView>
 
             <LinearLayout
                 android:id="@+id/title_container"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:layout_toEndOf="@id/anime_poster_detail"
                 android:layout_below="@id/detail"
+                android:layout_marginEnd="16dp"
                 android:layout_marginBottom="6dp"
+                android:layout_toEndOf="@id/cv_poster_detail"
                 android:orientation="vertical">
 
                 <TextView
+                    style="@style/TextContent.Tertiary"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:text="@string/title"
-                    style="@style/TextContent.Tertiary"/>
+                    android:text="@string/title" />
 
                 <TextView
-                    android:id="@+id/tv_title"
+                    android:id="@+id/tv_title_detail"
+                    style="@style/TextContent.SubItem2"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:lineSpacingMultiplier="1.1"
-                    tools:text="@string/lorem_ipsum_dolor_sit_amet"
-                    style="@style/TextContent.SubItem2"/>
+                    tools:text="@string/lorem_ipsum_dolor_sit_amet" />
 
             </LinearLayout>
 
@@ -81,45 +106,47 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_below="@id/title_container"
-                android:layout_toEndOf="@id/anime_poster_detail"
+                android:layout_marginEnd="16dp"
                 android:layout_marginBottom="6dp"
+                android:layout_toEndOf="@id/cv_poster_detail"
                 android:orientation="vertical">
 
                 <TextView
+                    style="@style/TextContent.Tertiary"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:text="@string/score"
-                    style="@style/TextContent.Tertiary"/>
+                    android:text="@string/score" />
 
                 <LinearLayout
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
+                    android:layout_marginEnd="12dp"
                     android:layout_marginBottom="6dp"
                     android:orientation="horizontal">
 
                     <RatingBar
-                        android:id="@+id/score_star_detail"
+                        android:id="@+id/rb_score_detail"
+                        style="?android:attr/ratingBarStyleSmall"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:layout_gravity="center_vertical"
-                        android:numStars="5"
-                        android:stepSize="0.01"
-                        android:isIndicator="true"
                         android:layout_marginEnd="12dp"
+                        android:isIndicator="true"
+                        android:numStars="5"
+                        android:progressBackgroundTint="@color/secondaryText"
                         android:scaleX="1.1"
                         android:scaleY="1.1"
+                        android:stepSize="0.01"
                         android:transformPivotX="0dp"
-                        android:transformPivotY="0dp"
-                        android:progressBackgroundTint="@color/secondaryText"
-                        style="?android:attr/ratingBarStyleSmall">
-                    </RatingBar>
+                        android:transformPivotY="0dp" />
 
                     <TextView
-                        android:id="@+id/tv_score"
+                        android:id="@+id/tv_score_detail"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
+                        android:layout_marginTop="2dp"
                         android:textColor="@color/secondaryText"
-                        tools:text="7.85"/>
+                        tools:text="7.85" />
 
                 </LinearLayout>
 
@@ -130,22 +157,23 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_below="@id/score_container"
-                android:layout_toEndOf="@id/anime_poster_detail"
+                android:layout_marginEnd="16dp"
                 android:layout_marginBottom="6dp"
+                android:layout_toEndOf="@id/cv_poster_detail"
                 android:orientation="vertical">
 
                 <TextView
+                    style="@style/TextContent.Tertiary"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:text="@string/status"
-                    style="@style/TextContent.Tertiary"/>
+                    android:text="@string/status" />
 
                 <TextView
-                    android:id="@+id/tv_status"
+                    android:id="@+id/tv_status_detail"
+                    style="@style/TextContent.SubItem2"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    tools:text="@string/currently_airing"
-                    style="@style/TextContent.SubItem2"/>
+                    tools:text="@string/currently_airing" />
 
             </LinearLayout>
 
@@ -154,22 +182,23 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_below="@id/status_container"
-                android:layout_toEndOf="@id/anime_poster_detail"
+                android:layout_marginEnd="16dp"
                 android:layout_marginBottom="6dp"
+                android:layout_toEndOf="@id/cv_poster_detail"
                 android:orientation="vertical">
 
                 <TextView
+                    style="@style/TextContent.Tertiary"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:text="@string/duration"
-                    style="@style/TextContent.Tertiary"/>
+                    android:text="@string/duration" />
 
                 <TextView
-                    android:id="@+id/tv_duration"
+                    android:id="@+id/tv_duration_detail"
+                    style="@style/TextContent.SubItem2"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    tools:text="@string/_24_min_per_ep"
-                    style="@style/TextContent.SubItem2"/>
+                    tools:text="@string/_24_min_per_ep" />
 
             </LinearLayout>
 
@@ -178,23 +207,24 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_below="@id/duration_container"
-                android:layout_toEndOf="@id/anime_poster_detail"
+                android:layout_marginEnd="16dp"
                 android:layout_marginBottom="6dp"
+                android:layout_toEndOf="@id/cv_poster_detail"
                 android:orientation="vertical">
 
                 <TextView
+                    style="@style/TextContent.Tertiary"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:text="@string/studios"
-                    style="@style/TextContent.Tertiary"/>
+                    android:text="@string/studios" />
 
                 <TextView
-                    android:id="@+id/tv_studio"
+                    android:id="@+id/tv_studio_detail"
+                    style="@style/TextContent.SubItem2"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:lineSpacingMultiplier="1.1"
-                    tools:text="@string/comix_wave_production"
-                    style="@style/TextContent.SubItem2"/>
+                    tools:text="@string/comix_wave_production" />
 
             </LinearLayout>
 
@@ -202,24 +232,24 @@
                 android:id="@+id/genres_container"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:layout_below="@id/anime_poster_detail"
-                android:layout_marginTop="12dp"
+                android:layout_below="@id/cv_poster_detail"
+                android:layout_marginHorizontal="16dp"
                 android:layout_marginBottom="8dp"
                 android:orientation="vertical">
 
                 <TextView
+                    style="@style/TextContent.Tertiary"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:text="@string/genres"
-                    style="@style/TextContent.Tertiary"/>
+                    android:text="@string/genres" />
 
                 <TextView
-                    android:id="@+id/tv_genres"
+                    android:id="@+id/tv_genres_detail"
+                    style="@style/TextContent.SubItem2"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:lineSpacingMultiplier="1.1"
-                    tools:text="@string/action_adventure_super_power_martial_arts_shounen"
-                    style="@style/TextContent.SubItem2"/>
+                    tools:text="@string/action_adventure_super_power_martial_arts_shounen" />
 
             </LinearLayout>
 
@@ -228,22 +258,23 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_below="@id/genres_container"
-                android:layout_marginBottom="12dp"
+                android:layout_marginHorizontal="16dp"
+                android:layout_marginBottom="8dp"
                 android:orientation="vertical">
 
                 <TextView
+                    style="@style/TextContent.Tertiary"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:text="@string/synopsis"
-                    style="@style/TextContent.Tertiary"/>
+                    android:text="@string/synopsis" />
 
                 <TextView
-                    android:id="@+id/tv_synopsis"
+                    android:id="@+id/tv_synopsis_detail"
+                    style="@style/TextContent.SubItem2"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:lineSpacingMultiplier="1.1"
-                    tools:text="@string/synopsis_text"
-                    style="@style/TextContent.SubItem2"/>
+                    tools:text="@string/synopsis_text" />
 
             </LinearLayout>
 
@@ -256,11 +287,12 @@
 
                 <TextView
                     android:id="@+id/see_also"
+                    style="@style/TextContent.Secondary"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
+                    android:layout_marginHorizontal="16dp"
                     android:text="@string/see_also"
-                    android:layout_marginBottom="6dp"
-                    style="@style/TextContent.Secondary"/>
+                    android:textSize="28sp" />
 
                 <androidx.recyclerview.widget.RecyclerView
                     android:id="@+id/rv_suggest_anime"
@@ -276,4 +308,4 @@
 
     </ScrollView>
 
-</RelativeLayout>
+</androidx.constraintlayout.widget.ConstraintLayout>

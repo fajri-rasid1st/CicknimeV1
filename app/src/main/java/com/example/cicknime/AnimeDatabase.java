@@ -2,7 +2,7 @@ package com.example.cicknime;
 
 import java.util.ArrayList;
 
-public class AnimeData {
+public class AnimeDatabase {
     private static final String[] title = {
             "Boruto: Naruto Next Generations",
             "The Pet Girl of Sakurasou",
@@ -14,19 +14,6 @@ public class AnimeData {
             "The Irregular at Magic High School",
             "Weathering With You",
             "A Silent Voice",
-    };
-
-    private static final String[][] genres = {
-            {"Action", "Adventure", "Super Power", "Martial Arts", "Shounen"},
-            {"Slice of Life", "Comedy", "Drama", "Romance", "School"},
-            {"Romance", "Supernatural", "School", "Drama"},
-            {"Harem", "Comedy", "Romance", "School", "Shounen"},
-            {"Adventure", "Comedy", "Fantasy", "Magic", "Parody", "Supernatural"},
-            {"Action", "Adventure", "Comedy", "Super Power", "Drama", "Fantasy", "Shounen"},
-            {"Comedy", "Romance", "Shounen"},
-            {"Action", "Magic", "Romance", "School", "Sci-Fi", "Supernatural"},
-            {"Slice of Life", "Drama", "Romance", "Fantasy"},
-            {"Drama", "School", "Shounen"},
     };
 
     private static final String[] synopsis = {
@@ -81,6 +68,32 @@ public class AnimeData {
             "2 hr. 10 min.",
     };
 
+    private static final String[] type = {
+            "TV",
+            "TV",
+            "Movie",
+            "TV",
+            "TV",
+            "TV",
+            "TV",
+            "TV",
+            "Movie",
+            "Movie",
+    };
+
+    private static final String[][] genres = {
+            {"Action", "Adventure", "Super Power", "Martial Arts", "Shounen"},
+            {"Slice of Life", "Comedy", "Drama", "Romance", "School"},
+            {"Romance", "Supernatural", "School", "Drama"},
+            {"Harem", "Comedy", "Romance", "School", "Shounen"},
+            {"Adventure", "Comedy", "Fantasy", "Magic", "Parody", "Supernatural"},
+            {"Action", "Adventure", "Comedy", "Super Power", "Drama", "Fantasy", "Shounen"},
+            {"Comedy", "Romance", "Shounen"},
+            {"Action", "Magic", "Romance", "School", "Sci-Fi", "Supernatural"},
+            {"Slice of Life", "Drama", "Romance", "Fantasy"},
+            {"Drama", "School", "Shounen"},
+    };
+
     private static final int[] poster = {
             R.drawable.poster_1,
             R.drawable.poster_2,
@@ -96,11 +109,11 @@ public class AnimeData {
 
     private static final double[] score = {5.80, 8.18, 8.95, 7.61, 8.15, 8.52, 7.95, 7.51, 8.39, 8.99};
 
-    static ArrayList<Anime> getListData() {
-        ArrayList<Anime> animeList = new ArrayList<>();
+    static ArrayList<AnimeModel> getListData() {
+        ArrayList<AnimeModel> animeList = new ArrayList<>();
 
         for (int i = 0; i < title.length; i++) {
-            Anime anime = new Anime();
+            AnimeModel anime = new AnimeModel();
 
             anime.setTitle(title[i]);
             anime.setGenres(genres[i]);
@@ -110,6 +123,7 @@ public class AnimeData {
             anime.setDuration(duration[i]);
             anime.setPoster(poster[i]);
             anime.setScore(score[i]);
+            anime.setType(type[i]);
 
             animeList.add(anime);
         }

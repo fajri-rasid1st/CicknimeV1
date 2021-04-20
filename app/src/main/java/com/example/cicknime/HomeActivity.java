@@ -14,7 +14,7 @@ import android.view.MenuItem;
 import java.util.ArrayList;
 
 public class HomeActivity extends AppCompatActivity {
-    private final ArrayList<Anime> animes = new ArrayList<>();
+    private final ArrayList<AnimeModel> animeModels = new ArrayList<>();
     private RecyclerView rvAnime;
 
     @Override
@@ -22,18 +22,18 @@ public class HomeActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_home);
 
-        Toolbar toolbarHome = findViewById(R.id.toolbar_home);
+        Toolbar toolbarHome = findViewById(R.id.tb_home);
         setSupportActionBar(toolbarHome);
 
         rvAnime = findViewById(R.id.rv_anime);
         rvAnime.setHasFixedSize(true);
 
-        animes.addAll(AnimeData.getListData());
+        animeModels.addAll(AnimeDatabase.getListData());
         showRecyclerList();
     }
 
-    private void showRecyclerList(){
-        ListAnimeAdapter listAnimeAdapter = new ListAnimeAdapter(animes);
+    private void showRecyclerList() {
+        ListAnimeAdapter listAnimeAdapter = new ListAnimeAdapter(animeModels);
 
         rvAnime.setAdapter(listAnimeAdapter);
         rvAnime.setLayoutManager(new LinearLayoutManager(this));
@@ -41,7 +41,7 @@ public class HomeActivity extends AppCompatActivity {
         listAnimeAdapter.setOnItemClickCallback(this::onItemSelectedAnime);
     }
 
-    private void onItemSelectedAnime(Anime anime) {
+    private void onItemSelectedAnime(AnimeModel anime) {
         Intent detailIntent = new Intent(HomeActivity.this, DetailActivity.class);
 
         detailIntent.putExtra("anime", anime);

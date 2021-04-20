@@ -15,10 +15,10 @@ import com.bumptech.glide.request.RequestOptions;
 import java.util.ArrayList;
 
 public class SuggestAnimeAdapter extends RecyclerView.Adapter<SuggestAnimeAdapter.ListViewHolder> {
-    private final ArrayList<Anime> animeList;
+    private final ArrayList<AnimeModel> animeList;
     private OnItemClickCallback onItemClickCallback;
 
-    public SuggestAnimeAdapter(ArrayList<Anime> animeList) {
+    public SuggestAnimeAdapter(ArrayList<AnimeModel> animeList) {
         this.animeList = animeList;
     }
 
@@ -31,14 +31,16 @@ public class SuggestAnimeAdapter extends RecyclerView.Adapter<SuggestAnimeAdapte
 
     @Override
     public void onBindViewHolder(@NonNull ListViewHolder holder, int position) {
-        Anime anime = animeList.get(position);
+        AnimeModel anime = animeList.get(position);
 
         Glide.with(holder.itemView.getContext())
                 .load(anime.getPoster())
                 .apply(new RequestOptions().override(160, 230))
-                .into(holder.suggestPoster);
+                .into(holder.ivSuggestPoster);
 
-        holder.suggestTvTitle.setText(anime.getTitle());
+        holder.tvSuggestTitle.setText(anime.getTitle());
+        holder.tvSuggestScore.setText(String.valueOf(anime.getScore()));
+        holder.tvSuggestType.setText(anime.getType());
 
         holder.itemView.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -54,14 +56,16 @@ public class SuggestAnimeAdapter extends RecyclerView.Adapter<SuggestAnimeAdapte
     }
 
     public static class ListViewHolder extends RecyclerView.ViewHolder {
-        ImageView suggestPoster;
-        TextView suggestTvTitle;
+        ImageView ivSuggestPoster;
+        TextView tvSuggestTitle, tvSuggestScore, tvSuggestType;
 
         public ListViewHolder(@NonNull View itemView) {
             super(itemView);
 
-            suggestPoster = itemView.findViewById(R.id.suggest_anime_poster);
-            suggestTvTitle = itemView.findViewById(R.id.suggest_anime_title);
+            ivSuggestPoster = itemView.findViewById(R.id.iv_poster_suggest);
+            tvSuggestTitle = itemView.findViewById(R.id.tv_title_suggest);
+            tvSuggestScore = itemView.findViewById(R.id.tv_score_suggest);
+            tvSuggestType = itemView.findViewById(R.id.tv_type_suggest);
         }
     }
 
@@ -70,7 +74,7 @@ public class SuggestAnimeAdapter extends RecyclerView.Adapter<SuggestAnimeAdapte
     }
 
     public interface OnItemClickCallback {
-        void onItemClicked(Anime data);
+        void onItemClicked(AnimeModel data);
     }
 }
 

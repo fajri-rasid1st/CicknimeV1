@@ -1,83 +1,91 @@
 <?xml version="1.0" encoding="utf-8"?>
-<RelativeLayout
-    xmlns:android="http://schemas.android.com/apk/res/android"
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
-    android:padding="14dp"
-    android:elevation="5dp"
-    android:layout_marginVertical="9dp"
-    android:layout_marginHorizontal="14dp"
-    android:background="@drawable/list_bg">
+    android:layout_margin="16dp"
+    android:background="@drawable/list_bg"
+    android:elevation="6dp">
 
     <de.hdodenhof.circleimageview.CircleImageView
-        android:id="@+id/item_poster"
-        android:layout_width="110dp"
-        android:layout_height="110dp"
-        android:layout_marginEnd="14dp"
-        android:layout_centerVertical="true"
+        android:id="@+id/iv_poster_list"
+        android:layout_width="100dp"
+        android:layout_height="100dp"
+        android:layout_margin="12dp"
+        android:elevation="8dp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
         tools:src="@android:color/darker_gray" />
 
-    <LinearLayout
-        android:layout_width="match_parent"
+
+    <TextView
+        android:id="@+id/tv_title_list"
+        android:layout_width="0dp"
         android:layout_height="wrap_content"
-        android:layout_toEndOf="@id/item_poster"
-        android:orientation="vertical">
+        android:layout_margin="12dp"
+        android:ellipsize="end"
+        android:fontFamily="@font/poppins_semibold"
+        android:maxLines="2"
+        android:textColor="@color/primaryText"
+        android:textSize="16sp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.0"
+        app:layout_constraintStart_toEndOf="@+id/iv_poster_list"
+        app:layout_constraintTop_toTopOf="parent"
+        tools:text="@string/title_of_anime" />
+
+    <LinearLayout
+        android:id="@+id/ll_rating_bar"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="12dp"
+        android:orientation="horizontal"
+        app:layout_constraintStart_toEndOf="@+id/iv_poster_list"
+        app:layout_constraintTop_toBottomOf="@+id/tv_title_list">
+
+        <RatingBar
+            android:id="@+id/rb_score_list"
+            style="?android:attr/ratingBarStyleSmall"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center_vertical"
+            android:layout_marginEnd="12dp"
+            android:isIndicator="true"
+            android:numStars="5"
+            android:progressBackgroundTint="@color/secondaryText"
+            android:scaleX="1.1"
+            android:scaleY="1.1"
+            android:stepSize="0.01"
+            android:transformPivotX="0dp"
+            android:transformPivotY="0dp" />
 
         <TextView
-            android:id="@+id/tv_title"
-            android:layout_width="match_parent"
+            android:id="@+id/tv_score_list"
+            android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:ellipsize="end"
-            android:fontFamily="@font/poppins_semibold"
-            android:textColor="@color/textOrIconColor"
-            android:textSize="16sp"
-            android:maxLines="2"
-            android:lineSpacingMultiplier="0.8"
-            tools:text="@string/title_of_anime" />
-
-        <LinearLayout
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_marginBottom="6dp"
-            android:orientation="horizontal">
-
-            <RatingBar
-                android:id="@+id/score_star"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_gravity="center_vertical"
-                android:numStars="5"
-                android:stepSize="0.01"
-                android:isIndicator="true"
-                android:layout_marginEnd="12dp"
-                android:scaleX="1.1"
-                android:scaleY="1.1"
-                android:transformPivotX="0dp"
-                android:transformPivotY="0dp"
-                android:progressBackgroundTint="@color/secondaryText"
-                style="?android:attr/ratingBarStyleSmall">
-            </RatingBar>
-
-            <TextView
-                android:id="@+id/tv_score"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:textColor="@color/textOrIconColor"
-                tools:text="7.85" />
-
-        </LinearLayout>
-
-        <TextView
-            android:id="@+id/tv_synopsis"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:ellipsize="end"
-            android:fontFamily="@font/poppins"
-            android:textColor="@color/textOrIconColor"
-            android:maxLines="3"
-            tools:text="@string/dummy_text" />
+            android:textColor="@color/secondaryText"
+            tools:text="0.00" />
 
     </LinearLayout>
 
-</RelativeLayout>
+    <TextView
+        android:id="@+id/tv_synopsis_list"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_marginHorizontal="12dp"
+        android:layout_marginTop="6dp"
+        android:layout_marginBottom="12dp"
+        android:ellipsize="end"
+        android:fontFamily="@font/poppins"
+        android:maxLines="4"
+        android:textColor="@color/secondaryText"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.0"
+        app:layout_constraintStart_toEndOf="@+id/iv_poster_list"
+        app:layout_constraintTop_toBottomOf="@+id/ll_rating_bar"
+        tools:text="@string/dummy_text" />
+
+</androidx.constraintlayout.widget.ConstraintLayout>

@@ -2,8 +2,8 @@ package com.example.cicknime;
 
 import java.io.Serializable;
 
-public class Anime implements Serializable {
-    private String title, synopsis, studios, status, duration;
+public class AnimeModel implements Serializable {
+    private String title, synopsis, studios, status, duration, type;
     private String[] genres;
     private int poster;
     private double score;
@@ -14,14 +14,6 @@ public class Anime implements Serializable {
 
     public void setTitle(String title) {
         this.title = title;
-    }
-
-    public String[] getGenres() {
-        return genres;
-    }
-
-    public void setGenres(String[] genres) {
-        this.genres = genres;
     }
 
     public String getSynopsis() {
@@ -54,6 +46,22 @@ public class Anime implements Serializable {
 
     public void setDuration(String duration) {
         this.duration = duration;
+    }
+
+    public String getType() {
+        return type;
+    }
+
+    public void setType(String type) {
+        this.type = type;
+    }
+
+    public String[] getGenres() {
+        return genres;
+    }
+
+    public void setGenres(String[] genres) {
+        this.genres = genres;
     }
 
     public int getPoster() {

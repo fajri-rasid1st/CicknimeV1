@@ -17,10 +17,9 @@ public class AboutActivity extends AppCompatActivity implements View.OnClickList
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_about);
 
-        Toolbar toolbarAbout = findViewById(R.id.toolbar_about);
+        Toolbar toolbarAbout = findViewById(R.id.tb_about);
         setSupportActionBar(toolbarAbout);
 
-        assert getSupportActionBar() != null;
         getSupportActionBar().setDisplayHomeAsUpEnabled(true);
 
         TextView github = findViewById(R.id.github);

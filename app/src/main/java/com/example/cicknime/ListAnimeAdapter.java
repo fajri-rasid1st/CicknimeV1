@@ -16,10 +16,10 @@ import com.bumptech.glide.request.RequestOptions;
 import java.util.ArrayList;
 
 public class ListAnimeAdapter extends RecyclerView.Adapter<ListAnimeAdapter.ListViewHolder> {
-    private final ArrayList<Anime> animeList;
+    private final ArrayList<AnimeModel> animeList;
     private OnItemClickCallback onItemClickCallback;
 
-    public ListAnimeAdapter(ArrayList<Anime> animeList) {
+    public ListAnimeAdapter(ArrayList<AnimeModel> animeList) {
         this.animeList = animeList;
     }
 
@@ -32,14 +32,14 @@ public class ListAnimeAdapter extends RecyclerView.Adapter<ListAnimeAdapter.List
 
     @Override
     public void onBindViewHolder(@NonNull ListViewHolder holder, int position) {
-        Anime anime = animeList.get(position);
+        AnimeModel anime = animeList.get(position);
 
         Glide.with(holder.itemView.getContext())
                 .load(anime.getPoster())
                 .apply(new RequestOptions().override(110, 110))
-                .into(holder.poster);
+                .into(holder.ivPoster);
 
-        holder.starScore.setRating((float) (anime.getScore() / 2));
+        holder.rbStarScore.setRating((float) (anime.getScore() / 2));
         holder.tvTitle.setText(anime.getTitle());
         holder.tvScore.setText(String.valueOf(anime.getScore()));
         holder.tvSynopsis.setText(anime.getSynopsis());
@@ -58,18 +58,18 @@ public class ListAnimeAdapter extends RecyclerView.Adapter<ListAnimeAdapter.List
     }
 
     public static class ListViewHolder extends RecyclerView.ViewHolder {
-        RatingBar starScore;
-        ImageView poster;
+        RatingBar rbStarScore;
+        ImageView ivPoster;
         TextView tvTitle, tvScore, tvSynopsis;
 
         public ListViewHolder(@NonNull View itemView) {
             super(itemView);
 
-            poster = itemView.findViewById(R.id.item_poster);
-            starScore = itemView.findViewById(R.id.score_star);
-            tvTitle = itemView.findViewById(R.id.tv_title);
-            tvScore = itemView.findViewById(R.id.tv_score);
-            tvSynopsis = itemView.findViewById(R.id.tv_synopsis);
+            ivPoster = itemView.findViewById(R.id.iv_poster_list);
+            rbStarScore = itemView.findViewById(R.id.rb_score_list);
+            tvTitle = itemView.findViewById(R.id.tv_title_list);
+            tvScore = itemView.findViewById(R.id.tv_score_list);
+            tvSynopsis = itemView.findViewById(R.id.tv_synopsis_list);
         }
     }
 
@@ -78,6 +78,6 @@ public class ListAnimeAdapter extends RecyclerView.Adapter<ListAnimeAdapter.List
     }
 
     public interface OnItemClickCallback {
-        void onItemClicked(Anime data);
+        void onItemClicked(AnimeModel data);
     }
 }
