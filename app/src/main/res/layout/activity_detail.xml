@@ -51,14 +51,13 @@
                 android:layout_alignBottom="@id/studio_container"
                 android:layout_marginHorizontal="16dp"
                 android:backgroundTint="@color/backgroundColor"
-                app:cardCornerRadius="4dp"
+                app:cardCornerRadius="8dp"
                 app:cardElevation="4dp">
 
                 <FrameLayout
                     android:layout_width="160dp"
                     android:layout_height="match_parent"
-                    android:layout_centerInParent="true"
-                    android:padding="6dp">
+                    android:layout_centerInParent="true">
 
                     <ImageView
                         android:id="@+id/iv_poster_detail"
@@ -299,7 +298,7 @@
                     android:layout_below="@id/see_also"
                     android:clipToPadding="false"
                     android:orientation="horizontal"
-                    android:paddingHorizontal="10dp"
+                    android:paddingHorizontal="8dp"
                     tools:listitem="@layout/item_list_suggest_anime" />
 
             </RelativeLayout>

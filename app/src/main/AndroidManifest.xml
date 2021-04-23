@@ -26,10 +26,6 @@
             android:name=".DetailActivity"
             android:parentActivityName=".HomeActivity"
             android:theme="@style/Theme.Cicknime"/>
-        <activity
-            android:name=".AboutActivity"
-            android:parentActivityName=".HomeActivity"
-            android:theme="@style/Theme.Cicknime"/>
 
         <meta-data
             android:name="preloaded_fonts"

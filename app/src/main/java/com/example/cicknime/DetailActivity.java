@@ -4,7 +4,6 @@ import android.annotation.SuppressLint;
 import android.content.Intent;
 import android.os.Bundle;
 import android.text.TextUtils;
-import android.view.Menu;
 import android.view.MenuItem;
 import android.widget.ImageView;
 import android.widget.RatingBar;
@@ -90,25 +89,13 @@ public class DetailActivity extends AppCompatActivity {
         getSupportActionBar().setDisplayHomeAsUpEnabled(true);
     }
 
-    @Override
-    public boolean onCreateOptionsMenu(Menu menu) {
-        getMenuInflater().inflate(R.menu.menu, menu);
-        return true;
-    }
-
     @SuppressLint("NonConstantResourceId")
     @Override
     public boolean onOptionsItemSelected(@NonNull MenuItem item) {
         int id = item.getItemId();
 
-        switch (id) {
-            case R.id.about:
-                Intent aboutIntent = new Intent(DetailActivity.this, AboutActivity.class);
-                startActivity(aboutIntent);
-                break;
-            case android.R.id.home:
-                finish();
-                break;
+        if (id == android.R.id.home) {
+            finish();
         }
 
         return true;

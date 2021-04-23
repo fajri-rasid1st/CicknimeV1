@@ -41,15 +41,4 @@
         <item name="android:textColor">@color/secondaryText</item>
         <item name="android:fontFamily">@font/poppins</item>
     </style>
-
-    <style name="TextContent.SubItem3">
-        <item name="android:paddingHorizontal" tools:ignore="NewApi">8dp</item>
-        <item name="android:paddingVertical" tools:ignore="NewApi">4dp</item>
-        <item name="android:background">@drawable/gradient_shape</item>
-        <item name="android:layout_width">wrap_content</item>
-        <item name="android:drawablePadding">6dp</item>
-        <item name="android:textSize">14sp</item>
-        <item name="android:textColor">@color/textOrIconColor</item>
-        <item name="android:fontFamily">@font/poppins</item>
-    </style>
 </resources>
