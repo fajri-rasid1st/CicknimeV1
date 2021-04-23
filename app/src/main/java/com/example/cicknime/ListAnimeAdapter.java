@@ -47,7 +47,7 @@ public class ListAnimeAdapter extends RecyclerView.Adapter<ListAnimeAdapter.List
         holder.itemView.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                onItemClickCallback.onItemClicked(animeList.get(holder.getAdapterPosition()));
+                onItemClickCallback.onItemClicked(animeList.get(holder.getBindingAdapterPosition()));
             }
         });
     }

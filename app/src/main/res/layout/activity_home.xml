@@ -25,7 +25,7 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:orientation="horizontal"
-        android:paddingBottom="8dp"
+        android:paddingBottom="10dp"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent">
@@ -50,14 +50,14 @@
                 android:textSize="38sp" />
 
             <Space
-                android:layout_width="2dp"
+                android:layout_width="4dp"
                 android:layout_height="match_parent" />
 
             <TextView
                 android:id="@+id/textView2"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:fontFamily="@font/poppins_medium"
+                android:fontFamily="@font/poppins_light"
                 android:text="@string/nime"
                 android:textColor="@color/primaryText"
                 android:textSize="28sp" />

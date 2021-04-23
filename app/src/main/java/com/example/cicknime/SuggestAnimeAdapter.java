@@ -45,7 +45,7 @@ public class SuggestAnimeAdapter extends RecyclerView.Adapter<SuggestAnimeAdapte
         holder.itemView.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                onItemClickCallback.onItemClicked(animeList.get(holder.getAdapterPosition()));
+                onItemClickCallback.onItemClicked(animeList.get(holder.getBindingAdapterPosition()));
             }
         });
     }

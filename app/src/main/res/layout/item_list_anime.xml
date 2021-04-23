@@ -23,14 +23,13 @@
 
         <ImageView
             android:id="@+id/iv_poster_list"
-            android:layout_width="100dp"
+            android:layout_width="match_parent"
             android:layout_height="match_parent"
-            android:elevation="8dp"
             android:scaleType="fitXY"
-            tools:ignore="ContentDescription" />
+            tools:ignore="ContentDescription"
+            tools:src="@drawable/poster_3" />
 
     </io.github.florent37.shapeofview.shapes.RoundRectView>
-
 
     <TextView
         android:id="@+id/tv_title_list"
