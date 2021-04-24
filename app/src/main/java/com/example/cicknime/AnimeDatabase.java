@@ -56,16 +56,16 @@ public class AnimeDatabase {
     };
 
     private static final String[] duration = {
-            "23 min. per ep.",
-            "23 min. per ep.",
-            "1 hr. 46 min.",
-            "23 min. per ep.",
-            "1 hr. 52 min.",
-            "24 min. per ep.",
-            "23 min. per ep.",
-            "25 min. per ep.",
-            "1 hr. 54 min.",
-            "2 hr. 10 min.",
+            "23 mins",
+            "23 mins",
+            "106 mins",
+            "23 mins",
+            "112 mins",
+            "24 mins",
+            "23 mins",
+            "25 mins",
+            "114 mins",
+            "130 mins",
     };
 
     private static final String[] type = {

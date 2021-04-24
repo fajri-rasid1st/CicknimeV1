@@ -15,32 +15,41 @@
         <item name="android:layout_width">match_parent</item>
         <item name="android:layout_height">wrap_content</item>
         <item name="android:textColor">@color/primaryText</item>
-        <item name="android:fontFamily">@font/poppins_semibold</item>
+        <item name="android:fontFamily">@font/poppins</item>
+    </style>
+
+    <style name="TextFrame" parent="@style/TextAppearance.AppCompat">
+        <item name="android:layout_width">match_parent</item>
+        <item name="android:layout_height">wrap_content</item>
+        <item name="android:textColor">@color/textOrIconColor</item>
+        <item name="android:fontFamily">@font/poppins</item>
     </style>
 
     <style name="TextContent.Primary">
         <item name="android:textSize">22sp</item>
+        <item name="android:fontFamily">@font/poppins_semibold</item>
     </style>
 
     <style name="TextContent.Secondary">
-        <item name="android:textSize">28sp</item>
+        <item name="android:textSize">22sp</item>
     </style>
 
-    <style name="TextContent.Tertiary">
+    <style name="TextContent.SubText">
         <item name="android:textSize">14sp</item>
     </style>
 
-    <style name="TextContent.SubItem1">
-        <item name="android:textSize">14sp</item>
-        <item name="android:textColor">@color/secondaryText</item>
+    <style name="TextFrame.Title">
+        <item name="android:fontFamily">@font/poppins_semibold</item>
+        <item name="android:textSize">16sp</item>
+    </style>
+
+    <style name="TextFrame.Studio">
         <item name="android:fontFamily">@font/poppins_medium</item>
+        <item name="android:textSize">14sp</item>
     </style>
 
-    <style name="TextContent.SubItem2">
-        <item name="android:drawablePadding">6dp</item>
-        <item name="android:textSize">14sp</item>
-        <item name="android:textColor">@color/secondaryText</item>
-        <item name="android:fontFamily">@font/poppins</item>
+    <style name="TextFrame.Aired">
+        <item name="android:textSize">12sp</item>
     </style>
 
 </resources>

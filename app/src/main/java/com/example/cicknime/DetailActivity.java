@@ -19,6 +19,8 @@ import androidx.appcompat.widget.Toolbar;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
+import com.ms.square.android.expandabletextview.ExpandableTextView;
+
 import java.util.ArrayList;
 
 public class DetailActivity extends AppCompatActivity {
@@ -69,24 +71,32 @@ public class DetailActivity extends AppCompatActivity {
     @SuppressLint("SetTextI18n")
     public void setDetailActivityContent() {
         TextView tvTitle = findViewById(R.id.tv_title_detail);
-        TextView tvSynopsis = findViewById(R.id.tv_synopsis_detail);
+        TextView tvSubtitle = findViewById(R.id.tv_subtitle_detail);
+        TextView tvFullTitle = findViewById(R.id.tv_full_title_detail);
         TextView tvStudios = findViewById(R.id.tv_studio_detail);
         TextView tvAired = findViewById(R.id.tv_aired_detail);
-        TextView tvDuration = findViewById(R.id.tv_duration_detail);
         TextView tvGenres = findViewById(R.id.tv_genres_detail);
-        TextView tvScore = findViewById(R.id.tv_score_detail);
-        ImageView ivPoster = findViewById(R.id.iv_poster_detail);
-        RatingBar rbScore = findViewById(R.id.rb_score_detail);
+        ExpandableTextView etvSynopsis = findViewById(R.id.etv_synopsis_detail);
 
-        tvTitle.setText(anime.getTitle() + " (" + anime.getType() + ") ");
-        tvSynopsis.setText(anime.getSynopsis());
+        TextView tvScore = findViewById(R.id.tv_score_detail);
+        RatingBar rbScore = findViewById(R.id.rb_star_detail);
+
+        ImageView ivPoster = findViewById(R.id.iv_poster_detail);
+        ImageView ivBanner = findViewById(R.id.iv_banner_detail);
+
+        tvTitle.setText(anime.getTitle());
+        tvSubtitle.setText(anime.getGenres()[0] + " • " + anime.getDuration());
+        tvFullTitle.setText(anime.getTitle());
         tvStudios.setText(anime.getStudios());
         tvAired.setText(anime.getAired());
-        tvDuration.setText(anime.getDuration());
         tvGenres.setText(TextUtils.join(", ", anime.getGenres()));
+        etvSynopsis.setText(anime.getSynopsis());
+
         tvScore.setText(String.valueOf(anime.getScore()));
-        ivPoster.setImageResource(anime.getPoster());
         rbScore.setRating((float) (anime.getScore() / 2));
+
+        ivPoster.setImageResource(anime.getPoster());
+        ivBanner.setImageResource(anime.getPoster());
 
         assert getSupportActionBar() != null;
         getSupportActionBar().setDisplayShowTitleEnabled(false);
