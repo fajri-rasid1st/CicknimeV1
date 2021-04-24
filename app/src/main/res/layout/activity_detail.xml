@@ -105,6 +105,7 @@
                     android:layout_width="match_parent"
                     android:layout_height="250dp"
                     android:adjustViewBounds="true"
+                    android:baselineAlignBottom="true"
                     android:scaleType="centerCrop"
                     tools:ignore="ContentDescription"
                     tools:src="@drawable/poster_3" />
@@ -118,13 +119,13 @@
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:layout_gravity="bottom"
-                    android:layout_marginTop="125dp"
+                    android:layout_marginTop="115dp"
                     android:layout_marginEnd="16dp">
 
                     <androidx.cardview.widget.CardView
                         android:id="@+id/cv_poster_detail"
                         android:layout_width="100dp"
-                        android:layout_height="150dp"
+                        android:layout_height="160dp"
                         android:layout_marginStart="16dp"
                         android:layout_marginBottom="8dp"
                         app:cardCornerRadius="8dp"
@@ -175,7 +176,6 @@
                         android:layout_width="0dp"
                         android:layout_height="wrap_content"
                         android:layout_marginStart="12sp"
-                        android:layout_marginTop="2dp"
                         app:layout_constraintEnd_toEndOf="parent"
                         app:layout_constraintStart_toEndOf="@id/cv_poster_detail"
                         app:layout_constraintTop_toBottomOf="@id/tv_studio_detail"
@@ -186,7 +186,6 @@
                         android:layout_width="0dp"
                         android:layout_height="wrap_content"
                         android:layout_marginStart="12dp"
-                        android:layout_marginTop="2dp"
                         android:orientation="horizontal"
                         app:layout_constraintEnd_toEndOf="parent"
                         app:layout_constraintStart_toEndOf="@+id/cv_poster_detail"
@@ -213,7 +212,7 @@
                             android:id="@+id/tv_score_detail"
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
-                            android:layout_marginTop="2dp"
+                            android:layout_marginTop="4dp"
                             android:fontFamily="@font/poppins"
                             android:textColor="@color/textOrIconColor"
                             tools:text="6.87" />
@@ -346,7 +345,7 @@
                     android:orientation="vertical"
                     app:layout_constraintStart_toStartOf="parent"
                     app:layout_constraintTop_toBottomOf="@id/tv_synopsis_title"
-                    expandableTextView:animDuration="300"
+                    expandableTextView:animDuration="500"
                     expandableTextView:maxCollapsedLines="4">
 
                     <TextView
@@ -362,7 +361,7 @@
                         android:layout_height="wrap_content"
                         android:layout_gravity="end|bottom"
                         android:background="@android:color/transparent"
-                        android:padding="8dp"
+                        android:padding="12dp"
                         tools:ignore="ContentDescription" />
 
                 </com.ms.square.android.expandabletextview.ExpandableTextView>
