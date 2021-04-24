@@ -3,7 +3,7 @@ package com.example.cicknime;
 import java.io.Serializable;
 
 public class AnimeModel implements Serializable {
-    private String title, synopsis, studios, status, duration, type;
+    private String title, synopsis, studios, aired, duration, type;
     private String[] genres;
     private int poster;
     private double score;
@@ -32,12 +32,12 @@ public class AnimeModel implements Serializable {
         this.studios = studios;
     }
 
-    public String getStatus() {
-        return status;
+    public String getAired() {
+        return aired;
     }
 
-    public void setStatus(String status) {
-        this.status = status;
+    public void setAired(String aired) {
+        this.aired = aired;
     }
 
     public String getDuration() {

@@ -1,12 +1,10 @@
 <?xml version="1.0" encoding="utf-8"?>
-<menu
-    xmlns:android="http://schemas.android.com/apk/res/android"
+<menu xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto">
 
     <item
-        android:title="@string/share"
-        android:id="@+id/about"
+        android:id="@+id/share"
         android:icon="@drawable/ic_baseline_share_24"
-        app:showAsAction="always">
-    </item>
+        android:title="@string/share"
+        app:showAsAction="always"/>
 </menu>

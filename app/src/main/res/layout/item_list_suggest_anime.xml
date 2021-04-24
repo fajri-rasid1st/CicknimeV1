@@ -2,8 +2,8 @@
 <androidx.cardview.widget.CardView xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
-    android:layout_width="wrap_content"
-    android:layout_height="wrap_content"
+    android:layout_width="150dp"
+    android:layout_height="230dp"
     android:layout_marginHorizontal="8dp"
     android:layout_marginTop="8dp"
     android:layout_marginBottom="12dp"
@@ -15,70 +15,64 @@
     app:layout_constraintStart_toStartOf="parent"
     app:layout_constraintTop_toTopOf="parent">
 
-    <FrameLayout
-        android:layout_width="140dp"
-        android:layout_height="210dp"
-        android:layout_centerInParent="true">
+    <ImageView
+        android:id="@+id/iv_poster_suggest"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:scaleType="fitXY"
+        tools:ignore="ContentDescription"
+        tools:src="@drawable/poster_3" />
 
-        <ImageView
-            android:id="@+id/iv_poster_suggest"
-            android:layout_width="140dp"
-            android:layout_height="210dp"
-            android:layout_gravity="center_horizontal|center_vertical"
-            android:scaleType="fitXY"
-            tools:ignore="ContentDescription"
-            tools:src="@drawable/poster_3" />
-
-        <GridLayout
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_gravity="top"
-            android:columnCount="2"
-            android:rowCount="1">
-
-            <TextView
-                android:id="@+id/tv_score_suggest"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_gravity="start"
-                android:layout_margin="6dp"
-                android:background="@drawable/suggest_anime_rating_bg"
-                android:drawableStart="@drawable/ic_baseline_star_24"
-                android:drawablePadding="4dp"
-                android:padding="6dp"
-                android:textColor="@color/textOrIconColor"
-                android:textSize="12sp"
-                tools:ignore="UseCompatTextViewDrawableXml"
-                tools:text="7.85" />
-
-            <TextView
-                android:id="@+id/tv_type_suggest"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_gravity="end"
-                android:layout_margin="6dp"
-                android:background="@drawable/suggest_anime_type_bg"
-                android:padding="6dp"
-                android:textColor="@color/textOrIconColor"
-                android:textSize="12sp"
-                tools:text="Movie" />
-
-        </GridLayout>
+    <GridLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_gravity="top"
+        android:columnCount="2"
+        android:rowCount="1">
 
         <TextView
-            android:id="@+id/tv_title_suggest"
-            android:layout_width="match_parent"
+            android:id="@+id/tv_score_suggest"
+            android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_gravity="bottom"
-            android:background="@drawable/suggest_anime_title_bg"
-            android:ellipsize="end"
-            android:fontFamily="@font/poppins"
-            android:maxLines="2"
+            android:layout_gravity="start"
+            android:layout_margin="6dp"
+            android:background="@drawable/suggest_anime_rating_bg"
+            android:drawableStart="@drawable/ic_baseline_star_24"
+            android:drawablePadding="4dp"
             android:padding="6dp"
             android:textColor="@color/textOrIconColor"
             android:textSize="12sp"
-            tools:text="This Is A Title Of Anime : It Can Be Multiple Line" />
+            tools:ignore="UseCompatTextViewDrawableXml"
+            tools:text="7.85" />
 
-    </FrameLayout>
+        <TextView
+            android:id="@+id/tv_type_suggest"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="end"
+            android:layout_margin="6dp"
+            android:background="@drawable/suggest_anime_type_bg"
+            android:padding="6dp"
+            android:textColor="@color/textOrIconColor"
+            android:textSize="12sp"
+            tools:text="Movie" />
+
+    </GridLayout>
+
+    <TextView
+        android:id="@+id/tv_title_suggest"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_gravity="bottom"
+        android:background="@drawable/suggest_anime_title_bg"
+        android:ellipsize="end"
+        android:fontFamily="@font/poppins"
+        android:maxLines="2"
+        android:paddingHorizontal="6dp"
+        android:paddingTop="12dp"
+        android:paddingBottom="6dp"
+        android:textColor="@color/textOrIconColor"
+        android:textSize="12sp"
+        tools:text="This Is A Title Of Anime : It Can Be Multiple Line" />
 
 </androidx.cardview.widget.CardView>

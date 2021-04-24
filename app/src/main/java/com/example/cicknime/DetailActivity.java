@@ -2,12 +2,16 @@ package com.example.cicknime;
 
 import android.annotation.SuppressLint;
 import android.content.Intent;
+import android.graphics.PorterDuff;
+import android.graphics.drawable.Drawable;
 import android.os.Bundle;
 import android.text.TextUtils;
+import android.view.Menu;
 import android.view.MenuItem;
 import android.widget.ImageView;
 import android.widget.RatingBar;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
@@ -67,7 +71,7 @@ public class DetailActivity extends AppCompatActivity {
         TextView tvTitle = findViewById(R.id.tv_title_detail);
         TextView tvSynopsis = findViewById(R.id.tv_synopsis_detail);
         TextView tvStudios = findViewById(R.id.tv_studio_detail);
-        TextView tvStatus = findViewById(R.id.tv_status_detail);
+        TextView tvAired = findViewById(R.id.tv_aired_detail);
         TextView tvDuration = findViewById(R.id.tv_duration_detail);
         TextView tvGenres = findViewById(R.id.tv_genres_detail);
         TextView tvScore = findViewById(R.id.tv_score_detail);
@@ -77,7 +81,7 @@ public class DetailActivity extends AppCompatActivity {
         tvTitle.setText(anime.getTitle() + " (" + anime.getType() + ") ");
         tvSynopsis.setText(anime.getSynopsis());
         tvStudios.setText(anime.getStudios());
-        tvStatus.setText(anime.getStatus());
+        tvAired.setText(anime.getAired());
         tvDuration.setText(anime.getDuration());
         tvGenres.setText(TextUtils.join(", ", anime.getGenres()));
         tvScore.setText(String.valueOf(anime.getScore()));
@@ -85,8 +89,24 @@ public class DetailActivity extends AppCompatActivity {
         rbScore.setRating((float) (anime.getScore() / 2));
 
         assert getSupportActionBar() != null;
-        getSupportActionBar().setTitle(anime.getTitle());
+        getSupportActionBar().setDisplayShowTitleEnabled(false);
         getSupportActionBar().setDisplayHomeAsUpEnabled(true);
+    }
+
+    @Override
+    public boolean onCreateOptionsMenu(Menu menu) {
+        getMenuInflater().inflate(R.menu.menu, menu);
+
+        for (int i = 0; i < menu.size(); i++) {
+            Drawable drawable = menu.getItem(i).getIcon();
+
+            if (drawable != null) {
+                drawable.mutate();
+                drawable.setColorFilter(getResources().getColor(R.color.primaryText), PorterDuff.Mode.SRC_ATOP);
+            }
+        }
+
+        return true;
     }
 
     @SuppressLint("NonConstantResourceId")
@@ -96,6 +116,8 @@ public class DetailActivity extends AppCompatActivity {
 
         if (id == android.R.id.home) {
             finish();
+        } else if (id == R.id.share) {
+            Toast.makeText(this, "Link has been copied to clipboard", Toast.LENGTH_SHORT).show();
         }
 
         return true;

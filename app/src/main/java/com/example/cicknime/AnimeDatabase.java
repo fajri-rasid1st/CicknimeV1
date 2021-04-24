@@ -42,17 +42,17 @@ public class AnimeDatabase {
             "Kyoto Animation",
     };
 
-    private static final String[] status = {
-            "Currently Airing",
-            "Finished Airing",
-            "Finished Airing",
-            "Finished Airing",
-            "Finished Airing",
-            "Currently Airing",
-            "Finished Airing",
-            "Finished Airing",
-            "Finished Airing",
-            "Finished Airing",
+    private static final String[] aired = {
+            "Apr 5, 2017 to ?",
+            "Oct 9, 2012 to Mar 26, 2013",
+            "Aug 26, 2016",
+            "Jan 10, 2021 to Apr 4, 2021",
+            "Dec 6, 2014",
+            "Oct 20, 1999 to ?",
+            "Oct 3, 2020 to Dec 19, 2020",
+            "Apr 4, 2016 to Sep 19, 2016",
+            "Jul 19, 2019",
+            "Sep 17, 2016",
     };
 
     private static final String[] duration = {
@@ -119,7 +119,7 @@ public class AnimeDatabase {
             anime.setGenres(genres[i]);
             anime.setSynopsis(synopsis[i]);
             anime.setStudios(studios[i]);
-            anime.setStatus(status[i]);
+            anime.setAired(aired[i]);
             anime.setDuration(duration[i]);
             anime.setPoster(poster[i]);
             anime.setScore(score[i]);

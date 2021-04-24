@@ -9,17 +9,15 @@
     android:background="@drawable/list_bg"
     android:elevation="4dp">
 
-    <io.github.florent37.shapeofview.shapes.RoundRectView
-        android:id="@+id/rrv_poster_list"
+    <androidx.cardview.widget.CardView
+        android:id="@+id/cv_poster_list"
         android:layout_width="100dp"
         android:layout_height="0dp"
+        app:cardCornerRadius="8dp"
+        app:cardElevation="0dp"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        app:shape_roundRect_bottomLeftRadius="8dp"
-        app:shape_roundRect_bottomRightRadius="8dp"
-        app:shape_roundRect_topLeftRadius="8dp"
-        app:shape_roundRect_topRightRadius="8dp">
+        app:layout_constraintTop_toTopOf="parent">
 
         <ImageView
             android:id="@+id/iv_poster_list"
@@ -29,7 +27,7 @@
             tools:ignore="ContentDescription"
             tools:src="@drawable/poster_3" />
 
-    </io.github.florent37.shapeofview.shapes.RoundRectView>
+    </androidx.cardview.widget.CardView>
 
     <TextView
         android:id="@+id/tv_title_list"
@@ -42,7 +40,7 @@
         android:textColor="@color/primaryText"
         android:textSize="14sp"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toEndOf="@+id/rrv_poster_list"
+        app:layout_constraintStart_toEndOf="@+id/cv_poster_list"
         app:layout_constraintTop_toTopOf="parent"
         tools:text="@string/title_of_anime" />
 
@@ -52,7 +50,7 @@
         android:layout_height="wrap_content"
         android:layout_marginStart="12dp"
         android:orientation="horizontal"
-        app:layout_constraintStart_toEndOf="@+id/rrv_poster_list"
+        app:layout_constraintStart_toEndOf="@+id/cv_poster_list"
         app:layout_constraintTop_toBottomOf="@+id/tv_title_list">
 
         <RatingBar
@@ -94,7 +92,7 @@
         android:textSize="12sp"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toEndOf="@+id/rrv_poster_list"
+        app:layout_constraintStart_toEndOf="@+id/cv_poster_list"
         app:layout_constraintTop_toBottomOf="@+id/ll_rating_bar"
         tools:text="@string/dummy_text" />
 
