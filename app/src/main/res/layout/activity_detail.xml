@@ -5,7 +5,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="@color/backgroundColor"
+    android:background="@color/textOrIconColor"
     tools:context=".DetailActivity">
 
     <androidx.appcompat.widget.Toolbar
@@ -105,7 +105,6 @@
                     android:layout_width="match_parent"
                     android:layout_height="250dp"
                     android:adjustViewBounds="true"
-                    android:baselineAlignBottom="true"
                     android:scaleType="centerCrop"
                     tools:ignore="ContentDescription"
                     tools:src="@drawable/poster_3" />
@@ -119,15 +118,15 @@
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:layout_gravity="bottom"
-                    android:layout_marginTop="115dp"
+                    android:layout_marginTop="110dp"
                     android:layout_marginEnd="16dp">
 
                     <androidx.cardview.widget.CardView
                         android:id="@+id/cv_poster_detail"
-                        android:layout_width="100dp"
+                        android:layout_width="105dp"
                         android:layout_height="160dp"
+                        android:layout_marginVertical="8dp"
                         android:layout_marginStart="16dp"
-                        android:layout_marginBottom="8dp"
                         app:cardCornerRadius="8dp"
                         app:cardElevation="4dp"
                         app:layout_constraintBottom_toBottomOf="parent"
@@ -227,27 +226,27 @@
                 android:id="@+id/cl_btn_container"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:layout_marginTop="8dp"
+                android:layout_marginTop="12dp"
                 app:layout_constraintBottom_toTopOf="@id/v_separator_1"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toBottomOf="@id/fl_detail">
 
-                <Button
-                    android:id="@+id/containedButton"
+                <com.google.android.material.button.MaterialButton
+                    android:id="@+id/btn_watch"
                     android:layout_width="0dp"
                     android:layout_height="wrap_content"
                     android:layout_marginHorizontal="16dp"
                     android:layout_marginBottom="16dp"
-                    android:text="@string/book_now"
+                    android:text="@string/watch_pv"
                     app:icon="@drawable/ic_baseline_movie_24"
                     app:layout_constraintBottom_toBottomOf="parent"
-                    app:layout_constraintEnd_toStartOf="@+id/outlinedButton"
+                    app:layout_constraintEnd_toStartOf="@+id/btn_favorite"
                     app:layout_constraintStart_toStartOf="parent"
                     app:layout_constraintTop_toTopOf="parent" />
 
-                <Button
-                    android:id="@+id/outlinedButton"
+                <com.google.android.material.button.MaterialButton
+                    android:id="@+id/btn_favorite"
                     style="?attr/materialButtonOutlinedStyle"
                     android:layout_width="0dp"
                     android:layout_height="wrap_content"
@@ -257,7 +256,7 @@
                     app:icon="@drawable/ic_baseline_favorite_border_24"
                     app:layout_constraintBottom_toBottomOf="parent"
                     app:layout_constraintEnd_toEndOf="parent"
-                    app:layout_constraintStart_toEndOf="@id/containedButton"
+                    app:layout_constraintStart_toEndOf="@id/btn_watch"
                     app:layout_constraintTop_toTopOf="parent"
                     app:strokeColor="@color/accentColor" />
 
@@ -267,7 +266,7 @@
                 android:id="@+id/v_separator_1"
                 android:layout_width="match_parent"
                 android:layout_height="8dp"
-                android:background="@color/separatorColor"
+                android:background="@color/backgroundColor"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toBottomOf="@id/cl_btn_container" />
@@ -311,7 +310,7 @@
                 android:layout_width="match_parent"
                 android:layout_height="8dp"
                 android:layout_marginTop="16dp"
-                android:background="@color/separatorColor"
+                android:background="@color/backgroundColor"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toBottomOf="@id/cl_genres_container" />
@@ -345,7 +344,7 @@
                     android:orientation="vertical"
                     app:layout_constraintStart_toStartOf="parent"
                     app:layout_constraintTop_toBottomOf="@id/tv_synopsis_title"
-                    expandableTextView:animDuration="500"
+                    expandableTextView:animDuration="300"
                     expandableTextView:maxCollapsedLines="4">
 
                     <TextView
@@ -361,8 +360,8 @@
                         android:layout_height="wrap_content"
                         android:layout_gravity="end|bottom"
                         android:background="@android:color/transparent"
-                        android:padding="12dp"
-                        tools:ignore="ContentDescription" />
+                        android:paddingVertical="8dp"
+                        tools:ignore="ContentDescription,RtlSymmetry" />
 
                 </com.ms.square.android.expandabletextview.ExpandableTextView>
 
@@ -373,7 +372,7 @@
                 android:layout_width="match_parent"
                 android:layout_height="8dp"
                 android:layout_marginTop="16dp"
-                android:background="@color/separatorColor"
+                android:background="@color/backgroundColor"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toBottomOf="@id/cl_synopsis_container" />

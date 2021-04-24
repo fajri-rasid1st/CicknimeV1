@@ -8,6 +8,7 @@ import android.os.Bundle;
 import android.text.TextUtils;
 import android.view.Menu;
 import android.view.MenuItem;
+import android.view.View;
 import android.widget.ImageView;
 import android.widget.RatingBar;
 import android.widget.TextView;
@@ -19,14 +20,18 @@ import androidx.appcompat.widget.Toolbar;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
+import com.google.android.material.button.MaterialButton;
 import com.ms.square.android.expandabletextview.ExpandableTextView;
 
 import java.util.ArrayList;
 
-public class DetailActivity extends AppCompatActivity {
+public class DetailActivity extends AppCompatActivity implements View.OnClickListener {
     private final ArrayList<AnimeModel> suggestAnimeModel = new ArrayList<>();
     private AnimeModel anime = null;
     private RecyclerView rvSuggestAnime;
+    private MaterialButton btnFavorite;
+    private boolean isFavorite = false;
+
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -36,8 +41,12 @@ public class DetailActivity extends AppCompatActivity {
         Toolbar toolbarDetail = findViewById(R.id.tb_detail);
         setSupportActionBar(toolbarDetail);
 
+        btnFavorite = findViewById(R.id.btn_favorite);
+        btnFavorite.setOnClickListener(this);
+
         Intent intent = getIntent();
         anime = (AnimeModel) intent.getSerializableExtra("anime");
+
         setDetailActivityContent();
 
         rvSuggestAnime = findViewById(R.id.rv_suggest_anime);
@@ -124,12 +133,29 @@ public class DetailActivity extends AppCompatActivity {
     public boolean onOptionsItemSelected(@NonNull MenuItem item) {
         int id = item.getItemId();
 
-        if (id == android.R.id.home) {
-            finish();
-        } else if (id == R.id.share) {
+        if (id == R.id.share) {
             Toast.makeText(this, "Link has been copied to clipboard", Toast.LENGTH_SHORT).show();
+        } else if (id == android.R.id.home) {
+            finish();
         }
 
         return true;
+    }
+
+    @Override
+    public void onClick(View view) {
+        int id = view.getId();
+
+        if (id == R.id.btn_favorite) {
+            if (!isFavorite) {
+                btnFavorite.setIconResource(R.drawable.ic_baseline_favorite_24);
+                Toast.makeText(this, "Anime has been added to favorite", Toast.LENGTH_SHORT).show();
+            } else {
+                btnFavorite.setIconResource(R.drawable.ic_baseline_favorite_border_24);
+                Toast.makeText(this, "Anime has been removed to favorite", Toast.LENGTH_SHORT).show();
+            }
+
+            isFavorite = !isFavorite;
+        }
     }
 }
