@@ -159,6 +159,7 @@ public class DetailActivity extends AppCompatActivity implements View.OnClickLis
     @Override
     public boolean onOptionsItemSelected(@NonNull MenuItem item) {
         int id = item.getItemId();
+
         if (id == R.id.share) {
             Toast.makeText(this, "Link has been copied to clipboard", Toast.LENGTH_SHORT).show();
         } else if (id == android.R.id.home) {
@@ -171,6 +172,7 @@ public class DetailActivity extends AppCompatActivity implements View.OnClickLis
     @Override
     public void onClick(View view) {
         int id = view.getId();
+
         if (id == R.id.btn_favorite) {
             btnFavoriteHandler();
         } else if (id == R.id.btn_watch) {
