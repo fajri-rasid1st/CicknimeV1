@@ -196,8 +196,8 @@ public class DetailActivity extends AppCompatActivity implements View.OnClickLis
     private void btnWatchHandler() {
         Animation slideUpFadeOut = AnimationUtils.loadAnimation(getApplicationContext(), R.anim.slide_up_fade_out);
         Animation slideDownFadeIn = AnimationUtils.loadAnimation(getApplicationContext(), R.anim.slide_down_fade_in);
-        Animation fadeIn = AnimationUtils.loadAnimation(getApplicationContext(), R.anim.fade_in);
-        Animation fadeOut = AnimationUtils.loadAnimation(getApplicationContext(), R.anim.fade_out);
+        Animation fadeIn = AnimationUtils.loadAnimation(getApplicationContext(), R.anim.slide_up_fade_in);
+        Animation fadeOut = AnimationUtils.loadAnimation(getApplicationContext(), R.anim.slide_down_fade_out);
 
         if (isWatch) {
             btnWatch.setText("watch pv");
