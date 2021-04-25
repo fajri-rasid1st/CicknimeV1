@@ -4,6 +4,10 @@
     android:shareInterpolator="@android:anim/accelerate_interpolator"
     android:startOffset="100">
 
+    <translate
+        android:fromYDelta="0"
+        android:toYDelta="500" />
+
     <alpha
         android:fromAlpha="1.0"
         android:toAlpha="0.0" />

@@ -53,16 +53,17 @@ public class DetailActivity extends AppCompatActivity implements View.OnClickLis
         setSupportActionBar(toolbarDetail);
 
         btnFavorite = findViewById(R.id.btn_favorite);
-        btnWatch = findViewById(R.id.btn_watch);
         btnFavorite.setOnClickListener(this);
+        btnWatch = findViewById(R.id.btn_watch);
         btnWatch.setOnClickListener(this);
-
-        youTubePlayerView = findViewById(R.id.youtube_player_view);
-        youTubePlayerView.setVisibility(View.GONE);
-        getLifecycle().addObserver(youTubePlayerView);
 
         clDetail = findViewById(R.id.cl_anime_detail_container);
         flBannerAnime = findViewById(R.id.fl_anime_banner);
+
+        youTubePlayerView = findViewById(R.id.youtube_player_view);
+        youTubePlayerView.setVisibility(View.GONE);
+
+        getLifecycle().addObserver(youTubePlayerView);
 
         Intent intent = getIntent();
         anime = (AnimeModel) intent.getSerializableExtra("anime");
@@ -71,7 +72,6 @@ public class DetailActivity extends AppCompatActivity implements View.OnClickLis
 
         rvSuggestAnime = findViewById(R.id.rv_suggest_anime);
         rvSuggestAnime.setHasFixedSize(true);
-
         suggestAnimeModel.addAll(AnimeDatabase.getListData());
 
         showRecyclerList();
@@ -216,7 +216,7 @@ public class DetailActivity extends AppCompatActivity implements View.OnClickLis
             clDetail.setVisibility(View.INVISIBLE);
             clDetail.startAnimation(slideUpFadeOut);
 
-            flBannerAnime.setVisibility(View.INVISIBLE);
+            flBannerAnime.setVisibility(View.GONE);
             flBannerAnime.startAnimation(slideUpFadeOut);
 
             youTubePlayerView.setVisibility(View.VISIBLE);

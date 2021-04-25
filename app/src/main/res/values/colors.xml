@@ -7,6 +7,6 @@
     <color name="primaryText">#383838</color>
     <color name="secondaryText">#6C6C6C</color>
     <color name="textOrIconColor">#FFFFFF</color>
-    <color name="dividerColor">#CFCECE</color>
+    <color name="dividerColor">#ACABAB</color>
     <color name="backgroundColor">#F0F0F0</color>
 </resources>
