@@ -57,7 +57,7 @@ public class DetailActivity extends AppCompatActivity implements View.OnClickLis
         btnWatch.setOnClickListener(this);
 
         youTubePlayerView = findViewById(R.id.youtube_player_view);
-        youTubePlayerView.setVisibility(View.INVISIBLE);
+        youTubePlayerView.setVisibility(View.GONE);
         getLifecycle().addObserver(youTubePlayerView);
 
         flBannerAnime = findViewById(R.id.fl_anime_banner);
@@ -128,8 +128,8 @@ public class DetailActivity extends AppCompatActivity implements View.OnClickLis
         youTubePlayerView.addYouTubePlayerListener(new AbstractYouTubePlayerListener() {
             @Override
             public void onReady(@NonNull YouTubePlayer youTubePlayer) {
-                String videoId = anime.getVideoId();
-                youTubePlayer.loadVideo(videoId, 0);
+                youTubePlayer.loadVideo(anime.getVideoId(), 0);
+                youTubePlayer.pause();
             }
         });
 
@@ -205,22 +205,22 @@ public class DetailActivity extends AppCompatActivity implements View.OnClickLis
             clDetail.setVisibility(View.VISIBLE);
             clDetail.startAnimation(slideDownFadeIn);
 
+            youTubePlayerView.setVisibility(View.GONE);
+            youTubePlayerView.startAnimation(fadeOut);
+
             flBannerAnime.setVisibility(View.VISIBLE);
             flBannerAnime.startAnimation(slideDownFadeIn);
-
-            youTubePlayerView.setVisibility(View.INVISIBLE);
-            youTubePlayerView.startAnimation(fadeOut);
         } else {
             btnWatch.setText("stop pv");
 
             clDetail.setVisibility(View.INVISIBLE);
             clDetail.startAnimation(slideUpFadeOut);
 
-            flBannerAnime.setVisibility(View.INVISIBLE);
-            flBannerAnime.startAnimation(slideUpFadeOut);
-
             youTubePlayerView.setVisibility(View.VISIBLE);
             youTubePlayerView.startAnimation(fadeIn);
+
+            flBannerAnime.setVisibility(View.INVISIBLE);
+            flBannerAnime.startAnimation(slideUpFadeOut);
         }
 
         isWatch = !isWatch;

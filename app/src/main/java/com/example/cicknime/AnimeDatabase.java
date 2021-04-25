@@ -90,8 +90,8 @@ public class AnimeDatabase {
             "S8_YwFLCh4U",
             "q_xdOEPjnS0",
             "Slz_rahWp6Y",
-            "nfK6UgLra7g",
             "Q6iK6DjV_iE",
+            "nfK6UgLra7g",
     };
 
     private static final String[][] genres = {
