@@ -63,7 +63,7 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_marginHorizontal="16dp"
-                app:layout_constraintBottom_toTopOf="@id/fl_detail"
+                app:layout_constraintBottom_toTopOf="@id/cl_detail"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toTopOf="parent">
@@ -91,8 +91,8 @@
 
             </androidx.constraintlayout.widget.ConstraintLayout>
 
-            <FrameLayout
-                android:id="@+id/fl_detail"
+            <androidx.constraintlayout.widget.ConstraintLayout
+                android:id="@+id/cl_detail"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_marginTop="8dp"
@@ -100,10 +100,13 @@
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toBottomOf="@id/cl_title_detail">
 
-                <FrameLayout
-                    android:id="@+id/fl_anime_banner"
+                <androidx.constraintlayout.widget.ConstraintLayout
+                    android:id="@+id/cl_anime_banner"
                     android:layout_width="match_parent"
-                    android:layout_height="250dp">
+                    android:layout_height="250dp"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toTopOf="parent">
 
                     <ImageView
                         android:id="@+id/iv_banner_detail"
@@ -111,21 +114,30 @@
                         android:layout_height="match_parent"
                         android:adjustViewBounds="true"
                         android:scaleType="centerCrop"
+                        app:layout_constraintEnd_toEndOf="parent"
+                        app:layout_constraintStart_toStartOf="parent"
+                        app:layout_constraintTop_toTopOf="parent"
                         tools:ignore="ContentDescription"
                         tools:src="@drawable/poster_3" />
 
                     <View
                         android:layout_width="match_parent"
                         android:layout_height="match_parent"
-                        android:background="@drawable/detail_banner" />
+                        android:background="@drawable/detail_banner"
+                        app:layout_constraintEnd_toEndOf="parent"
+                        app:layout_constraintStart_toStartOf="parent"
+                        app:layout_constraintTop_toTopOf="parent" />
 
-                </FrameLayout>
+                </androidx.constraintlayout.widget.ConstraintLayout>
 
                 <LinearLayout
                     android:id="@+id/ll_anime_pv"
                     android:layout_width="match_parent"
                     android:layout_height="250dp"
-                    android:orientation="vertical">
+                    android:orientation="vertical"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toTopOf="parent">
 
                     <com.pierfrancescosoffritti.androidyoutubeplayer.core.player.views.YouTubePlayerView
                         android:id="@+id/youtube_player_view"
@@ -142,7 +154,8 @@
                     android:layout_height="wrap_content"
                     android:layout_gravity="bottom"
                     android:layout_marginTop="110dp"
-                    android:layout_marginEnd="16dp">
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toTopOf="@id/cl_anime_banner">
 
                     <androidx.cardview.widget.CardView
                         android:id="@+id/cv_poster_detail"
@@ -243,17 +256,17 @@
 
                 </androidx.constraintlayout.widget.ConstraintLayout>
 
-            </FrameLayout>
+            </androidx.constraintlayout.widget.ConstraintLayout>
 
             <androidx.constraintlayout.widget.ConstraintLayout
                 android:id="@+id/cl_btn_container"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:layout_marginTop="12dp"
+                android:layout_marginTop="8dp"
                 app:layout_constraintBottom_toTopOf="@id/v_separator_1"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toBottomOf="@id/fl_detail">
+                app:layout_constraintTop_toBottomOf="@id/cl_detail">
 
                 <com.google.android.material.button.MaterialButton
                     android:id="@+id/btn_watch"

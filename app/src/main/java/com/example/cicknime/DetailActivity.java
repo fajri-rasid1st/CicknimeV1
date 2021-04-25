@@ -11,7 +11,6 @@ import android.view.MenuItem;
 import android.view.View;
 import android.view.animation.Animation;
 import android.view.animation.AnimationUtils;
-import android.widget.FrameLayout;
 import android.widget.ImageView;
 import android.widget.RatingBar;
 import android.widget.TextView;
@@ -40,7 +39,7 @@ public class DetailActivity extends AppCompatActivity implements View.OnClickLis
     private MaterialButton btnWatch;
     private YouTubePlayerView youTubePlayerView;
     private ConstraintLayout clDetail;
-    private FrameLayout flBannerAnime;
+    private ConstraintLayout clBannerAnime;
     private boolean isFavorite = false;
     private boolean isWatch = false;
 
@@ -58,7 +57,7 @@ public class DetailActivity extends AppCompatActivity implements View.OnClickLis
         btnWatch.setOnClickListener(this);
 
         clDetail = findViewById(R.id.cl_anime_detail_container);
-        flBannerAnime = findViewById(R.id.fl_anime_banner);
+        clBannerAnime = findViewById(R.id.cl_anime_banner);
 
         youTubePlayerView = findViewById(R.id.youtube_player_view);
         youTubePlayerView.setVisibility(View.GONE);
@@ -196,31 +195,31 @@ public class DetailActivity extends AppCompatActivity implements View.OnClickLis
     private void btnWatchHandler() {
         Animation slideUpFadeOut = AnimationUtils.loadAnimation(getApplicationContext(), R.anim.slide_up_fade_out);
         Animation slideDownFadeIn = AnimationUtils.loadAnimation(getApplicationContext(), R.anim.slide_down_fade_in);
-        Animation fadeIn = AnimationUtils.loadAnimation(getApplicationContext(), R.anim.slide_up_fade_in);
-        Animation fadeOut = AnimationUtils.loadAnimation(getApplicationContext(), R.anim.slide_down_fade_out);
+        Animation slideUpFadeIn = AnimationUtils.loadAnimation(getApplicationContext(), R.anim.slide_up_fade_in);
+        Animation slideDownFadeOut = AnimationUtils.loadAnimation(getApplicationContext(), R.anim.slide_down_fade_out);
 
         if (isWatch) {
             btnWatch.setText("watch pv");
 
             youTubePlayerView.setVisibility(View.GONE);
-            youTubePlayerView.startAnimation(fadeOut);
+            youTubePlayerView.startAnimation(slideDownFadeOut);
 
             clDetail.setVisibility(View.VISIBLE);
             clDetail.startAnimation(slideDownFadeIn);
 
-            flBannerAnime.setVisibility(View.VISIBLE);
-            flBannerAnime.startAnimation(slideDownFadeIn);
+            clBannerAnime.setVisibility(View.VISIBLE);
+            clBannerAnime.startAnimation(slideDownFadeIn);
         } else {
             btnWatch.setText("stop pv");
 
             clDetail.setVisibility(View.INVISIBLE);
             clDetail.startAnimation(slideUpFadeOut);
 
-            flBannerAnime.setVisibility(View.GONE);
-            flBannerAnime.startAnimation(slideUpFadeOut);
+            clBannerAnime.setVisibility(View.GONE);
+            clBannerAnime.startAnimation(slideUpFadeOut);
 
             youTubePlayerView.setVisibility(View.VISIBLE);
-            youTubePlayerView.startAnimation(fadeIn);
+            youTubePlayerView.startAnimation(slideUpFadeIn);
         }
 
         isWatch = !isWatch;
