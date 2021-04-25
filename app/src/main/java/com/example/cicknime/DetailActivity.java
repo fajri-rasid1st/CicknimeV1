@@ -9,6 +9,9 @@ import android.text.TextUtils;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
+import android.view.animation.Animation;
+import android.view.animation.AnimationUtils;
+import android.widget.FrameLayout;
 import android.widget.ImageView;
 import android.widget.RatingBar;
 import android.widget.TextView;
@@ -17,11 +20,15 @@ import android.widget.Toast;
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.appcompat.widget.Toolbar;
+import androidx.constraintlayout.widget.ConstraintLayout;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
 import com.google.android.material.button.MaterialButton;
 import com.ms.square.android.expandabletextview.ExpandableTextView;
+import com.pierfrancescosoffritti.androidyoutubeplayer.core.player.YouTubePlayer;
+import com.pierfrancescosoffritti.androidyoutubeplayer.core.player.listeners.AbstractYouTubePlayerListener;
+import com.pierfrancescosoffritti.androidyoutubeplayer.core.player.views.YouTubePlayerView;
 
 import java.util.ArrayList;
 
@@ -30,8 +37,11 @@ public class DetailActivity extends AppCompatActivity implements View.OnClickLis
     private AnimeModel anime = null;
     private RecyclerView rvSuggestAnime;
     private MaterialButton btnFavorite;
+    private MaterialButton btnWatch;
+    private FrameLayout flBannerAnime;
+    private YouTubePlayerView youTubePlayerView;
     private boolean isFavorite = false;
-
+    private boolean isWatch = false;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -42,7 +52,15 @@ public class DetailActivity extends AppCompatActivity implements View.OnClickLis
         setSupportActionBar(toolbarDetail);
 
         btnFavorite = findViewById(R.id.btn_favorite);
+        btnWatch = findViewById(R.id.btn_watch);
         btnFavorite.setOnClickListener(this);
+        btnWatch.setOnClickListener(this);
+
+        youTubePlayerView = findViewById(R.id.youtube_player_view);
+        youTubePlayerView.setVisibility(View.INVISIBLE);
+        getLifecycle().addObserver(youTubePlayerView);
+
+        flBannerAnime = findViewById(R.id.fl_anime_banner);
 
         Intent intent = getIntent();
         anime = (AnimeModel) intent.getSerializableExtra("anime");
@@ -78,7 +96,7 @@ public class DetailActivity extends AppCompatActivity implements View.OnClickLis
     }
 
     @SuppressLint("SetTextI18n")
-    public void setDetailActivityContent() {
+    private void setDetailActivityContent() {
         TextView tvTitle = findViewById(R.id.tv_title_detail);
         TextView tvSubtitle = findViewById(R.id.tv_subtitle_detail);
         TextView tvFullTitle = findViewById(R.id.tv_full_title_detail);
@@ -106,6 +124,14 @@ public class DetailActivity extends AppCompatActivity implements View.OnClickLis
 
         ivPoster.setImageResource(anime.getPoster());
         ivBanner.setImageResource(anime.getPoster());
+
+        youTubePlayerView.addYouTubePlayerListener(new AbstractYouTubePlayerListener() {
+            @Override
+            public void onReady(@NonNull YouTubePlayer youTubePlayer) {
+                String videoId = anime.getVideoId();
+                youTubePlayer.loadVideo(videoId, 0);
+            }
+        });
 
         assert getSupportActionBar() != null;
         getSupportActionBar().setDisplayShowTitleEnabled(false);
@@ -147,15 +173,56 @@ public class DetailActivity extends AppCompatActivity implements View.OnClickLis
         int id = view.getId();
 
         if (id == R.id.btn_favorite) {
-            if (!isFavorite) {
-                btnFavorite.setIconResource(R.drawable.ic_baseline_favorite_24);
-                Toast.makeText(this, "Anime has been added to favorite", Toast.LENGTH_SHORT).show();
-            } else {
-                btnFavorite.setIconResource(R.drawable.ic_baseline_favorite_border_24);
-                Toast.makeText(this, "Anime has been removed to favorite", Toast.LENGTH_SHORT).show();
-            }
-
-            isFavorite = !isFavorite;
+            btnFavoriteHandler();
+        } else if (id == R.id.btn_watch) {
+            btnWatchHandler();
         }
+    }
+
+    private void btnFavoriteHandler() {
+        if (!isFavorite) {
+            btnFavorite.setIconResource(R.drawable.ic_baseline_favorite_24);
+            Toast.makeText(this, "Anime has been added to favorite", Toast.LENGTH_SHORT).show();
+        } else {
+            btnFavorite.setIconResource(R.drawable.ic_baseline_favorite_border_24);
+            Toast.makeText(this, "Anime has been removed from favorite", Toast.LENGTH_SHORT).show();
+        }
+
+        isFavorite = !isFavorite;
+    }
+
+    @SuppressLint("SetTextI18n")
+    private void btnWatchHandler() {
+        ConstraintLayout clDetail = findViewById(R.id.cl_anime_detail_container);
+        Animation slideUpFadeOut = AnimationUtils.loadAnimation(getApplicationContext(), R.anim.slide_up_fade_out);
+        Animation slideDownFadeIn = AnimationUtils.loadAnimation(getApplicationContext(), R.anim.slide_down_fade_in);
+        Animation fadeIn = AnimationUtils.loadAnimation(getApplicationContext(), R.anim.fade_in);
+        Animation fadeOut = AnimationUtils.loadAnimation(getApplicationContext(), R.anim.fade_out);
+
+        if (isWatch) {
+            btnWatch.setText("watch pv");
+
+            clDetail.setVisibility(View.VISIBLE);
+            clDetail.startAnimation(slideDownFadeIn);
+
+            flBannerAnime.setVisibility(View.VISIBLE);
+            flBannerAnime.startAnimation(slideDownFadeIn);
+
+            youTubePlayerView.setVisibility(View.INVISIBLE);
+            youTubePlayerView.startAnimation(fadeOut);
+        } else {
+            btnWatch.setText("stop pv");
+
+            clDetail.setVisibility(View.INVISIBLE);
+            clDetail.startAnimation(slideUpFadeOut);
+
+            flBannerAnime.setVisibility(View.INVISIBLE);
+            flBannerAnime.startAnimation(slideUpFadeOut);
+
+            youTubePlayerView.setVisibility(View.VISIBLE);
+            youTubePlayerView.startAnimation(fadeIn);
+        }
+
+        isWatch = !isWatch;
     }
 }

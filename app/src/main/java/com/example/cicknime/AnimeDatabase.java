@@ -81,6 +81,19 @@ public class AnimeDatabase {
             "Movie",
     };
 
+    private static final String[] videoId = {
+            "p3acMxaM7-g",
+            "7pQ-mhJR6S8",
+            "NooIc3dMncc",
+            "CNs2IZQZcyI",
+            "tA3yE4_t6SY",
+            "S8_YwFLCh4U",
+            "q_xdOEPjnS0",
+            "Slz_rahWp6Y",
+            "nfK6UgLra7g",
+            "Q6iK6DjV_iE",
+    };
+
     private static final String[][] genres = {
             {"Action", "Adventure", "Super Power", "Martial Arts", "Shounen"},
             {"Slice of Life", "Comedy", "Drama", "Romance", "School"},
@@ -124,6 +137,7 @@ public class AnimeDatabase {
             anime.setPoster(poster[i]);
             anime.setScore(score[i]);
             anime.setType(type[i]);
+            anime.setVideoId(videoId[i]);
 
             animeList.add(anime);
         }
