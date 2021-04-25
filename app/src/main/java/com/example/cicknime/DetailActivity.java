@@ -2,6 +2,7 @@ package com.example.cicknime;
 
 import android.annotation.SuppressLint;
 import android.content.Intent;
+import android.graphics.Point;
 import android.graphics.PorterDuff;
 import android.graphics.drawable.Drawable;
 import android.os.Bundle;
@@ -9,17 +10,17 @@ import android.text.TextUtils;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
-import android.view.animation.Animation;
-import android.view.animation.AnimationUtils;
+import android.view.ViewGroup;
+import android.view.ViewParent;
 import android.widget.ImageView;
 import android.widget.RatingBar;
+import android.widget.ScrollView;
 import android.widget.TextView;
 import android.widget.Toast;
 
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.appcompat.widget.Toolbar;
-import androidx.constraintlayout.widget.ConstraintLayout;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
@@ -38,10 +39,8 @@ public class DetailActivity extends AppCompatActivity implements View.OnClickLis
     private MaterialButton btnFavorite;
     private MaterialButton btnWatch;
     private YouTubePlayerView youTubePlayerView;
-    private ConstraintLayout clDetail;
-    private ConstraintLayout clBannerAnime;
+    private ScrollView svDetail;
     private boolean isFavorite = false;
-    private boolean isWatch = false;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -56,11 +55,8 @@ public class DetailActivity extends AppCompatActivity implements View.OnClickLis
         btnWatch = findViewById(R.id.btn_watch);
         btnWatch.setOnClickListener(this);
 
-        clDetail = findViewById(R.id.cl_anime_detail_container);
-        clBannerAnime = findViewById(R.id.cl_anime_banner);
-
         youTubePlayerView = findViewById(R.id.youtube_player_view);
-        youTubePlayerView.setVisibility(View.GONE);
+        svDetail = findViewById(R.id.sv_detail);
 
         getLifecycle().addObserver(youTubePlayerView);
 
@@ -193,35 +189,42 @@ public class DetailActivity extends AppCompatActivity implements View.OnClickLis
 
     @SuppressLint("SetTextI18n")
     private void btnWatchHandler() {
-        Animation slideUpFadeOut = AnimationUtils.loadAnimation(getApplicationContext(), R.anim.slide_up_fade_out);
-        Animation slideDownFadeIn = AnimationUtils.loadAnimation(getApplicationContext(), R.anim.slide_down_fade_in);
-        Animation slideUpFadeIn = AnimationUtils.loadAnimation(getApplicationContext(), R.anim.slide_up_fade_in);
-        Animation slideDownFadeOut = AnimationUtils.loadAnimation(getApplicationContext(), R.anim.slide_down_fade_out);
+        scrollToView(svDetail, youTubePlayerView);
+    }
 
-        if (isWatch) {
-            btnWatch.setText("watch pv");
+    /**
+     * Used to scroll to the given view.
+     *
+     * @param scrollViewParent Parent ScrollView
+     * @param view             View to which we need to scroll.
+     */
+    private void scrollToView(final ScrollView scrollViewParent, final View view) {
+        // Get deepChild Offset
+        Point childOffset = new Point();
+        getDeepChildOffset(scrollViewParent, view.getParent(), view, childOffset);
+        // Scroll to child.
+        scrollViewParent.smoothScrollTo(0, childOffset.y);
+    }
 
-            youTubePlayerView.setVisibility(View.GONE);
-            youTubePlayerView.startAnimation(slideDownFadeOut);
+    /**
+     * Used to get deep child offset.
+     * <p/>
+     * 1. We need to scroll to child in scrollview, but the child may not the direct child to scrollview.
+     * 2. So to get correct child position to scroll, we need to iterate through all of its parent views till the main parent.
+     *
+     * @param mainParent        Main Top parent.
+     * @param parent            Parent.
+     * @param child             Child.
+     * @param accumulatedOffset Accumulated Offset.
+     */
+    private void getDeepChildOffset(final ViewGroup mainParent, final ViewParent parent, final View child, final Point accumulatedOffset) {
+        ViewGroup parentGroup = (ViewGroup) parent;
 
-            clDetail.setVisibility(View.VISIBLE);
-            clDetail.startAnimation(slideDownFadeIn);
+        accumulatedOffset.x += child.getLeft();
+        accumulatedOffset.y += child.getTop();
 
-            clBannerAnime.setVisibility(View.VISIBLE);
-            clBannerAnime.startAnimation(slideDownFadeIn);
-        } else {
-            btnWatch.setText("stop pv");
+        if (parentGroup.equals(mainParent)) return;
 
-            clDetail.setVisibility(View.INVISIBLE);
-            clDetail.startAnimation(slideUpFadeOut);
-
-            clBannerAnime.setVisibility(View.GONE);
-            clBannerAnime.startAnimation(slideUpFadeOut);
-
-            youTubePlayerView.setVisibility(View.VISIBLE);
-            youTubePlayerView.startAnimation(slideUpFadeIn);
-        }
-
-        isWatch = !isWatch;
+        getDeepChildOffset(mainParent, parentGroup.getParent(), parentGroup, accumulatedOffset);
     }
 }

@@ -130,24 +130,6 @@
 
                 </androidx.constraintlayout.widget.ConstraintLayout>
 
-                <LinearLayout
-                    android:id="@+id/ll_anime_pv"
-                    android:layout_width="match_parent"
-                    android:layout_height="250dp"
-                    android:orientation="vertical"
-                    app:layout_constraintEnd_toEndOf="parent"
-                    app:layout_constraintStart_toStartOf="parent"
-                    app:layout_constraintTop_toTopOf="parent">
-
-                    <com.pierfrancescosoffritti.androidyoutubeplayer.core.player.views.YouTubePlayerView
-                        android:id="@+id/youtube_player_view"
-                        android:layout_width="match_parent"
-                        android:layout_height="match_parent"
-                        app:autoPlay="false"
-                        app:showFullScreenButton="false" />
-
-                </LinearLayout>
-
                 <androidx.constraintlayout.widget.ConstraintLayout
                     android:id="@+id/cl_anime_detail_container"
                     android:layout_width="match_parent"
@@ -263,7 +245,7 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_marginTop="8dp"
-                app:layout_constraintBottom_toTopOf="@id/v_separator_1"
+                app:layout_constraintBottom_toTopOf="@id/v_separator_0"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toBottomOf="@id/cl_detail">
@@ -299,13 +281,66 @@
             </androidx.constraintlayout.widget.ConstraintLayout>
 
             <View
-                android:id="@+id/v_separator_1"
+                android:id="@+id/v_separator_0"
                 android:layout_width="match_parent"
                 android:layout_height="8dp"
                 android:background="@color/backgroundColor"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toBottomOf="@id/cl_btn_container" />
+
+            <androidx.constraintlayout.widget.ConstraintLayout
+                android:id="@+id/cl_pv_container"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="16dp"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@id/v_separator_0">
+
+                <TextView
+                    android:id="@+id/tv_pv_title"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginHorizontal="16dp"
+                    android:fontFamily="@font/poppins_semibold"
+                    android:text="@string/preview"
+                    android:textAllCaps="true"
+                    android:textColor="@color/secondaryText"
+                    android:textSize="16sp"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toTopOf="parent" />
+
+                <LinearLayout
+                    android:id="@+id/ll_anime_pv"
+                    android:layout_width="match_parent"
+                    android:layout_height="250dp"
+                    android:layout_marginTop="4dp"
+                    android:orientation="vertical"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toBottomOf="@id/tv_pv_title">
+
+                    <com.pierfrancescosoffritti.androidyoutubeplayer.core.player.views.YouTubePlayerView
+                        android:id="@+id/youtube_player_view"
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent"
+                        app:autoPlay="false"
+                        app:showFullScreenButton="false" />
+
+                </LinearLayout>
+
+            </androidx.constraintlayout.widget.ConstraintLayout>
+
+            <View
+                android:id="@+id/v_separator_1"
+                android:layout_width="match_parent"
+                android:layout_height="8dp"
+                android:layout_marginTop="16dp"
+                android:background="@color/backgroundColor"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@id/cl_pv_container" />
 
             <androidx.constraintlayout.widget.ConstraintLayout
                 android:id="@+id/cl_genres_container"
