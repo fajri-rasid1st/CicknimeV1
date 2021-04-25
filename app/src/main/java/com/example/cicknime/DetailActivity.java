@@ -38,8 +38,9 @@ public class DetailActivity extends AppCompatActivity implements View.OnClickLis
     private RecyclerView rvSuggestAnime;
     private MaterialButton btnFavorite;
     private MaterialButton btnWatch;
-    private FrameLayout flBannerAnime;
     private YouTubePlayerView youTubePlayerView;
+    private ConstraintLayout clDetail;
+    private FrameLayout flBannerAnime;
     private boolean isFavorite = false;
     private boolean isWatch = false;
 
@@ -60,6 +61,7 @@ public class DetailActivity extends AppCompatActivity implements View.OnClickLis
         youTubePlayerView.setVisibility(View.GONE);
         getLifecycle().addObserver(youTubePlayerView);
 
+        clDetail = findViewById(R.id.cl_anime_detail_container);
         flBannerAnime = findViewById(R.id.fl_anime_banner);
 
         Intent intent = getIntent();
@@ -128,8 +130,7 @@ public class DetailActivity extends AppCompatActivity implements View.OnClickLis
         youTubePlayerView.addYouTubePlayerListener(new AbstractYouTubePlayerListener() {
             @Override
             public void onReady(@NonNull YouTubePlayer youTubePlayer) {
-                youTubePlayer.loadVideo(anime.getVideoId(), 0);
-                youTubePlayer.pause();
+                youTubePlayer.cueVideo(anime.getVideoId(), 0);
             }
         });
 
@@ -193,7 +194,6 @@ public class DetailActivity extends AppCompatActivity implements View.OnClickLis
 
     @SuppressLint("SetTextI18n")
     private void btnWatchHandler() {
-        ConstraintLayout clDetail = findViewById(R.id.cl_anime_detail_container);
         Animation slideUpFadeOut = AnimationUtils.loadAnimation(getApplicationContext(), R.anim.slide_up_fade_out);
         Animation slideDownFadeIn = AnimationUtils.loadAnimation(getApplicationContext(), R.anim.slide_down_fade_in);
         Animation fadeIn = AnimationUtils.loadAnimation(getApplicationContext(), R.anim.fade_in);
@@ -202,11 +202,11 @@ public class DetailActivity extends AppCompatActivity implements View.OnClickLis
         if (isWatch) {
             btnWatch.setText("watch pv");
 
-            clDetail.setVisibility(View.VISIBLE);
-            clDetail.startAnimation(slideDownFadeIn);
-
             youTubePlayerView.setVisibility(View.GONE);
             youTubePlayerView.startAnimation(fadeOut);
+
+            clDetail.setVisibility(View.VISIBLE);
+            clDetail.startAnimation(slideDownFadeIn);
 
             flBannerAnime.setVisibility(View.VISIBLE);
             flBannerAnime.startAnimation(slideDownFadeIn);
@@ -216,11 +216,11 @@ public class DetailActivity extends AppCompatActivity implements View.OnClickLis
             clDetail.setVisibility(View.INVISIBLE);
             clDetail.startAnimation(slideUpFadeOut);
 
-            youTubePlayerView.setVisibility(View.VISIBLE);
-            youTubePlayerView.startAnimation(fadeIn);
-
             flBannerAnime.setVisibility(View.INVISIBLE);
             flBannerAnime.startAnimation(slideUpFadeOut);
+
+            youTubePlayerView.setVisibility(View.VISIBLE);
+            youTubePlayerView.startAnimation(fadeIn);
         }
 
         isWatch = !isWatch;

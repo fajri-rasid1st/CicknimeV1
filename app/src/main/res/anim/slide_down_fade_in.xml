@@ -2,7 +2,7 @@
 <set xmlns:android="http://schemas.android.com/apk/res/android"
     android:duration="500"
     android:shareInterpolator="@android:anim/accelerate_interpolator"
-    android:startOffset="600">
+    android:startOffset="800">
 
     <translate
         android:fromYDelta="-500"
