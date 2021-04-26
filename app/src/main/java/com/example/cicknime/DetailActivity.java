@@ -58,12 +58,11 @@ public class DetailActivity extends AppCompatActivity implements View.OnClickLis
         youTubePlayerView = findViewById(R.id.youtube_player_view);
         svDetail = findViewById(R.id.sv_detail);
 
-        getLifecycle().addObserver(youTubePlayerView);
-
         Intent intent = getIntent();
         anime = (AnimeModel) intent.getSerializableExtra("anime");
 
         setDetailActivityContent();
+        getLifecycle().addObserver(youTubePlayerView);
 
         rvSuggestAnime = findViewById(R.id.rv_suggest_anime);
         rvSuggestAnime.setHasFixedSize(true);
