@@ -170,7 +170,6 @@
                         android:layout_marginStart="12dp"
                         android:layout_marginTop="12dp"
                         android:ellipsize="end"
-                        android:lineSpacingMultiplier="0.8"
                         android:maxLines="2"
                         app:layout_constraintEnd_toEndOf="parent"
                         app:layout_constraintStart_toEndOf="@id/cv_poster_detail"
