@@ -43,7 +43,7 @@ public class ListAnimeAdapter extends RecyclerView.Adapter<ListAnimeAdapter.List
 
     public class ListViewHolder extends RecyclerView.ViewHolder implements View.OnClickListener {
         AnimeModel anime;
-        TextView tvTitle, tvSynopsis, tvScore;
+        TextView tvTitle, tvSynopsis;
         ImageView ivPoster;
         RatingBar rbStarScore;
 
@@ -54,7 +54,6 @@ public class ListAnimeAdapter extends RecyclerView.Adapter<ListAnimeAdapter.List
 
             tvTitle = itemView.findViewById(R.id.tv_title_list);
             tvSynopsis = itemView.findViewById(R.id.tv_synopsis_list);
-            tvScore = itemView.findViewById(R.id.tv_score_list);
             ivPoster = itemView.findViewById(R.id.iv_poster_list);
             rbStarScore = itemView.findViewById(R.id.rb_score_list);
         }
@@ -64,7 +63,6 @@ public class ListAnimeAdapter extends RecyclerView.Adapter<ListAnimeAdapter.List
 
             tvTitle.setText(anime.getTitle());
             tvSynopsis.setText(anime.getSynopsis());
-            tvScore.setText(String.valueOf(anime.getScore()));
             ivPoster.setImageResource(anime.getPoster());
             rbStarScore.setRating(anime.getScore() / 2);
 
