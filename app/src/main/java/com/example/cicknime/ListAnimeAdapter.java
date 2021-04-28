@@ -10,17 +10,18 @@ import android.widget.TextView;
 import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
 
-import com.bumptech.glide.Glide;
-import com.bumptech.glide.request.RequestOptions;
-
 import java.util.ArrayList;
 
 public class ListAnimeAdapter extends RecyclerView.Adapter<ListAnimeAdapter.ListViewHolder> {
-    private final ArrayList<AnimeModel> animeList;
-    private OnItemClickCallback onItemClickCallback;
+    private ArrayList<AnimeModel> animes;
+    private OnItemClickListener<AnimeModel> clickListener;
 
-    public ListAnimeAdapter(ArrayList<AnimeModel> animeList) {
-        this.animeList = animeList;
+    public void setAnimes(ArrayList<AnimeModel> animes) {
+        this.animes = animes;
+    }
+
+    public void setClickListener(OnItemClickListener<AnimeModel> clickListener) {
+        this.clickListener = clickListener;
     }
 
     @NonNull
@@ -32,52 +33,46 @@ public class ListAnimeAdapter extends RecyclerView.Adapter<ListAnimeAdapter.List
 
     @Override
     public void onBindViewHolder(@NonNull ListViewHolder holder, int position) {
-        AnimeModel anime = animeList.get(position);
-
-        Glide.with(holder.itemView.getContext())
-                .load(anime.getPoster())
-                .apply(new RequestOptions().override(110, 110))
-                .into(holder.ivPoster);
-
-        holder.rbStarScore.setRating((float) (anime.getScore() / 2));
-        holder.tvTitle.setText(anime.getTitle());
-        holder.tvScore.setText(String.valueOf(anime.getScore()));
-        holder.tvSynopsis.setText(anime.getSynopsis());
-
-        holder.itemView.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                onItemClickCallback.onItemClicked(animeList.get(holder.getBindingAdapterPosition()));
-            }
-        });
+        holder.onBind(animes.get(position));
     }
 
     @Override
     public int getItemCount() {
-        return animeList.size();
+        return animes.size();
     }
 
-    public static class ListViewHolder extends RecyclerView.ViewHolder {
-        RatingBar rbStarScore;
+    public class ListViewHolder extends RecyclerView.ViewHolder implements View.OnClickListener {
+        AnimeModel anime;
+        TextView tvTitle, tvSynopsis, tvScore;
         ImageView ivPoster;
-        TextView tvTitle, tvScore, tvSynopsis;
+        RatingBar rbStarScore;
 
         public ListViewHolder(@NonNull View itemView) {
             super(itemView);
 
+            itemView.setOnClickListener(this);
+
+            tvTitle = itemView.findViewById(R.id.tv_title_list);
+            tvSynopsis = itemView.findViewById(R.id.tv_synopsis_list);
+            tvScore = itemView.findViewById(R.id.tv_score_list);
             ivPoster = itemView.findViewById(R.id.iv_poster_list);
             rbStarScore = itemView.findViewById(R.id.rb_score_list);
-            tvTitle = itemView.findViewById(R.id.tv_title_list);
-            tvScore = itemView.findViewById(R.id.tv_score_list);
-            tvSynopsis = itemView.findViewById(R.id.tv_synopsis_list);
         }
-    }
 
-    public void setOnItemClickCallback(OnItemClickCallback onItemClickCallback) {
-        this.onItemClickCallback = onItemClickCallback;
-    }
+        public void onBind(AnimeModel anime) {
+            this.anime = anime;
 
-    public interface OnItemClickCallback {
-        void onItemClicked(AnimeModel data);
+            tvTitle.setText(anime.getTitle());
+            tvSynopsis.setText(anime.getSynopsis());
+            tvScore.setText(String.valueOf(anime.getScore()));
+            ivPoster.setImageResource(anime.getPoster());
+            rbStarScore.setRating(anime.getScore() / 2);
+
+        }
+
+        @Override
+        public void onClick(View v) {
+            clickListener.onClick(anime);
+        }
     }
 }

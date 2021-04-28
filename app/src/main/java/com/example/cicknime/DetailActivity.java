@@ -6,7 +6,7 @@ import android.graphics.Point;
 import android.graphics.PorterDuff;
 import android.graphics.drawable.Drawable;
 import android.os.Bundle;
-import android.text.TextUtils;
+import android.os.Parcelable;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
@@ -30,65 +30,73 @@ import com.pierfrancescosoffritti.androidyoutubeplayer.core.player.YouTubePlayer
 import com.pierfrancescosoffritti.androidyoutubeplayer.core.player.listeners.AbstractYouTubePlayerListener;
 import com.pierfrancescosoffritti.androidyoutubeplayer.core.player.views.YouTubePlayerView;
 
-import java.util.ArrayList;
 
-public class DetailActivity extends AppCompatActivity implements View.OnClickListener {
-    private final ArrayList<AnimeModel> suggestAnimeModel = new ArrayList<>();
-    private AnimeModel anime = null;
-    private RecyclerView rvSuggestAnime;
+public class DetailActivity extends AppCompatActivity implements View.OnClickListener, OnItemClickListener<AnimeModel> {
+    private Toolbar toolbarDetail;
     private MaterialButton btnFavorite;
     private MaterialButton btnWatch;
     private YouTubePlayerView youTubePlayerView;
     private ScrollView svDetail;
+    private AnimeModel anime = null;
     private boolean isFavorite = false;
+    private AnimeDatabase animeDb;
+    private SuggestAnimeAdapter suggestAnimeAdapter;
+    private RecyclerView rvSuggestAnime;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_detail);
 
-        Toolbar toolbarDetail = findViewById(R.id.tb_detail);
-        setSupportActionBar(toolbarDetail);
-
+        toolbarDetail = findViewById(R.id.tb_detail);
         btnFavorite = findViewById(R.id.btn_favorite);
         btnFavorite.setOnClickListener(this);
         btnWatch = findViewById(R.id.btn_watch);
         btnWatch.setOnClickListener(this);
-
         youTubePlayerView = findViewById(R.id.youtube_player_view);
         svDetail = findViewById(R.id.sv_detail);
+        animeDb = new AnimeDatabase(this);
+        suggestAnimeAdapter = new SuggestAnimeAdapter();
+        rvSuggestAnime = findViewById(R.id.rv_suggest_anime);
+    }
 
-        Intent intent = getIntent();
-        anime = (AnimeModel) intent.getSerializableExtra("anime");
+    @Override
+    protected void onStart() {
+        super.onStart();
 
+        setSupportActionBar(toolbarDetail);
+
+        assert getSupportActionBar() != null;
+        getSupportActionBar().setDisplayShowTitleEnabled(false);
+        getSupportActionBar().setDisplayHomeAsUpEnabled(true);
+
+        anime = getIntent().getParcelableExtra("ANIME_DETAIL");
         setDetailActivityContent();
         getLifecycle().addObserver(youTubePlayerView);
 
-        rvSuggestAnime = findViewById(R.id.rv_suggest_anime);
-        rvSuggestAnime.setHasFixedSize(true);
-        suggestAnimeModel.addAll(AnimeDatabase.getListData());
+        suggestAnimeAdapter.setClickListener(this);
+        suggestAnimeAdapter.setAnimes(animeDb.getListData());
 
         showRecyclerList();
     }
 
-    private void showRecyclerList() {
-        SuggestAnimeAdapter suggestAnimeAdapter = new SuggestAnimeAdapter(suggestAnimeModel);
-        LinearLayoutManager layoutManager = new LinearLayoutManager(this, LinearLayoutManager.HORIZONTAL, false);
+    @Override
+    public void onClick(AnimeModel animeModel) {
+        Intent detailActivity = new Intent(DetailActivity.this, DetailActivity.class);
 
-        rvSuggestAnime.setAdapter(suggestAnimeAdapter);
-        rvSuggestAnime.setLayoutManager(layoutManager);
+        detailActivity.putExtra("ANIME_DETAIL", (Parcelable) animeModel);
+        detailActivity.setFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
 
-        suggestAnimeAdapter.setOnItemClickCallback(this::onItemSelectedSuggestAnime);
+        startActivity(detailActivity);
+        overridePendingTransition(android.R.anim.fade_in, android.R.anim.fade_out);
     }
 
-    private void onItemSelectedSuggestAnime(AnimeModel anime) {
-        Intent detailIntent = new Intent(DetailActivity.this, DetailActivity.class);
+    private void showRecyclerList() {
+        LinearLayoutManager layoutManager = new LinearLayoutManager(this, LinearLayoutManager.HORIZONTAL, false);
 
-        detailIntent.putExtra("anime", anime);
-        detailIntent.setFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
-
-        startActivity(detailIntent);
-        overridePendingTransition(android.R.anim.fade_in, android.R.anim.fade_out);
+        rvSuggestAnime.setLayoutManager(layoutManager);
+        rvSuggestAnime.setHasFixedSize(true);
+        rvSuggestAnime.setAdapter(suggestAnimeAdapter);
     }
 
     @SuppressLint("SetTextI18n")
@@ -108,15 +116,15 @@ public class DetailActivity extends AppCompatActivity implements View.OnClickLis
         ImageView ivBanner = findViewById(R.id.iv_banner_detail);
 
         tvTitle.setText(anime.getTitle());
-        tvSubtitle.setText(anime.getGenres()[0] + " • " + anime.getDuration());
+        tvSubtitle.setText(anime.getGenres().split(", ")[0] + " • " + anime.getDuration());
         tvFullTitle.setText(anime.getTitle());
         tvStudios.setText(anime.getStudios());
         tvAired.setText(anime.getAired());
-        tvGenres.setText(TextUtils.join(", ", anime.getGenres()));
+        tvGenres.setText(anime.getGenres());
         etvSynopsis.setText(anime.getSynopsis());
 
         tvScore.setText(String.valueOf(anime.getScore()));
-        rbScore.setRating((float) (anime.getScore() / 2));
+        rbScore.setRating(anime.getScore() / 2);
 
         ivPoster.setImageResource(anime.getPoster());
         ivBanner.setImageResource(anime.getPoster());
@@ -127,10 +135,6 @@ public class DetailActivity extends AppCompatActivity implements View.OnClickLis
                 youTubePlayer.cueVideo(anime.getVideoId(), 0);
             }
         });
-
-        assert getSupportActionBar() != null;
-        getSupportActionBar().setDisplayShowTitleEnabled(false);
-        getSupportActionBar().setDisplayHomeAsUpEnabled(true);
     }
 
     @Override
@@ -149,7 +153,6 @@ public class DetailActivity extends AppCompatActivity implements View.OnClickLis
         return true;
     }
 
-    @SuppressLint("NonConstantResourceId")
     @Override
     public boolean onOptionsItemSelected(@NonNull MenuItem item) {
         int id = item.getItemId();
@@ -186,7 +189,6 @@ public class DetailActivity extends AppCompatActivity implements View.OnClickLis
         isFavorite = !isFavorite;
     }
 
-    @SuppressLint("SetTextI18n")
     private void btnWatchHandler() {
         scrollToView(svDetail, youTubePlayerView);
     }

@@ -61,12 +61,10 @@
 
     <TextView
         android:id="@+id/tv_title_suggest"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
+        style="@style/TextContent"
         android:layout_gravity="bottom"
         android:background="@drawable/suggest_anime_title_bg"
         android:ellipsize="end"
-        android:fontFamily="@font/poppins"
         android:maxLines="2"
         android:paddingHorizontal="6dp"
         android:paddingTop="12dp"

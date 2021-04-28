@@ -16,6 +16,22 @@
         <item name="android:layout_height">wrap_content</item>
         <item name="android:textColor">@color/primaryText</item>
         <item name="android:fontFamily">@font/poppins</item>
+        <item name="android:textSize">22sp</item>
+    </style>
+
+    <style name="TextContent.Primary">
+        <item name="android:fontFamily">@font/poppins_semibold</item>
+    </style>
+
+    <style name="TextContent.SubText">
+        <item name="android:textSize">14sp</item>
+    </style>
+
+    <style name="TextContent.Title">
+        <item name="android:textColor">@color/secondaryText</item>
+        <item name="android:fontFamily">@font/poppins_semibold</item>
+        <item name="android:textSize">16sp</item>
+        <item name="textAllCaps">true</item>
     </style>
 
     <style name="TextFrame" parent="@style/TextAppearance.AppCompat">
@@ -23,19 +39,6 @@
         <item name="android:layout_height">wrap_content</item>
         <item name="android:textColor">@color/textOrIconColor</item>
         <item name="android:fontFamily">@font/poppins</item>
-    </style>
-
-    <style name="TextContent.Primary">
-        <item name="android:textSize">22sp</item>
-        <item name="android:fontFamily">@font/poppins_semibold</item>
-    </style>
-
-    <style name="TextContent.Secondary">
-        <item name="android:textSize">22sp</item>
-    </style>
-
-    <style name="TextContent.SubText">
-        <item name="android:textSize">14sp</item>
     </style>
 
     <style name="TextFrame.Title">

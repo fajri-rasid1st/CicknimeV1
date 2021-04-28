@@ -55,7 +55,6 @@
                 android:layout_height="match_parent" />
 
             <TextView
-                android:id="@+id/textView2"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:fontFamily="@font/poppins_light"
@@ -66,7 +65,6 @@
         </LinearLayout>
 
         <TextView
-            android:id="@+id/textView"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:fontFamily="@font/poppins"

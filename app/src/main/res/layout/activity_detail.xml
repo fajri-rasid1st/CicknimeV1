@@ -30,7 +30,7 @@
 
         <TextView
             android:id="@+id/tv_detail"
-            style="@style/TextContent.Secondary"
+            style="@style/TextContent"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:text="@string/detail" />
@@ -71,8 +71,6 @@
                 <TextView
                     android:id="@+id/tv_title_detail"
                     style="@style/TextContent.Primary"
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
                     android:ellipsize="end"
                     android:maxLines="1"
                     app:layout_constraintEnd_toEndOf="parent"
@@ -84,7 +82,6 @@
                     android:id="@+id/tv_subtitle_detail"
                     style="@style/TextContent.SubText"
                     android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
                     app:layout_constraintStart_toStartOf="parent"
                     app:layout_constraintTop_toBottomOf="@id/tv_title_detail"
                     tools:text="@string/subtitle" />
@@ -166,7 +163,6 @@
                         android:id="@+id/tv_full_title_detail"
                         style="@style/TextFrame.Title"
                         android:layout_width="0dp"
-                        android:layout_height="wrap_content"
                         android:layout_marginStart="12dp"
                         android:layout_marginTop="12dp"
                         android:ellipsize="end"
@@ -180,7 +176,6 @@
                         android:id="@+id/tv_studio_detail"
                         style="@style/TextFrame.Studio"
                         android:layout_width="0dp"
-                        android:layout_height="wrap_content"
                         android:layout_marginStart="12sp"
                         app:layout_constraintEnd_toEndOf="parent"
                         app:layout_constraintStart_toEndOf="@id/cv_poster_detail"
@@ -191,7 +186,6 @@
                         android:id="@+id/tv_aired_detail"
                         style="@style/TextFrame.Aired"
                         android:layout_width="0dp"
-                        android:layout_height="wrap_content"
                         android:layout_marginStart="12sp"
                         app:layout_constraintEnd_toEndOf="parent"
                         app:layout_constraintStart_toEndOf="@id/cv_poster_detail"
@@ -300,14 +294,9 @@
 
                 <TextView
                     android:id="@+id/tv_pv_title"
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
+                    style="@style/TextContent.Title"
                     android:layout_marginHorizontal="16dp"
-                    android:fontFamily="@font/poppins_semibold"
                     android:text="@string/preview"
-                    android:textAllCaps="true"
-                    android:textColor="@color/secondaryText"
-                    android:textSize="16sp"
                     app:layout_constraintStart_toStartOf="parent"
                     app:layout_constraintTop_toTopOf="parent" />
 
@@ -354,22 +343,14 @@
 
                 <TextView
                     android:id="@+id/tv_genres_title"
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:fontFamily="@font/poppins_semibold"
+                    style="@style/TextContent.Title"
                     android:text="@string/genres"
-                    android:textAllCaps="true"
-                    android:textColor="@color/secondaryText"
-                    android:textSize="16sp"
                     app:layout_constraintStart_toStartOf="parent"
                     app:layout_constraintTop_toTopOf="parent" />
 
                 <TextView
                     android:id="@+id/tv_genres_detail"
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:fontFamily="@font/poppins"
-                    android:textColor="@color/primaryText"
+                    style="@style/TextContent.SubText"
                     app:layout_constraintStart_toStartOf="parent"
                     app:layout_constraintTop_toBottomOf="@id/tv_genres_title"
                     tools:text="Romance, Supernatural, School, Drama" />
@@ -398,13 +379,8 @@
 
                 <TextView
                     android:id="@+id/tv_synopsis_title"
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:fontFamily="@font/poppins_semibold"
+                    style="@style/TextContent.Title"
                     android:text="@string/synopsis"
-                    android:textAllCaps="true"
-                    android:textColor="@color/secondaryText"
-                    android:textSize="16sp"
                     app:layout_constraintStart_toStartOf="parent"
                     app:layout_constraintTop_toTopOf="parent" />
 
@@ -420,10 +396,7 @@
 
                     <TextView
                         android:id="@+id/expandable_text"
-                        android:layout_width="match_parent"
-                        android:layout_height="wrap_content"
-                        android:fontFamily="@font/poppins"
-                        android:textColor="@color/primaryText" />
+                        style="@style/TextContent.SubText" />
 
                     <ImageButton
                         android:id="@id/expand_collapse"
@@ -459,14 +432,9 @@
 
                 <TextView
                     android:id="@+id/tv_related_anime_title"
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
+                    style="@style/TextContent.Title"
                     android:layout_marginHorizontal="16dp"
-                    android:fontFamily="@font/poppins_semibold"
                     android:text="@string/related_anime"
-                    android:textAllCaps="true"
-                    android:textColor="@color/secondaryText"
-                    android:textSize="16sp"
                     app:layout_constraintStart_toStartOf="parent"
                     app:layout_constraintTop_toTopOf="parent" />
 

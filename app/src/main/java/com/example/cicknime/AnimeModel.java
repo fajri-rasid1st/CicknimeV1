@@ -2,12 +2,43 @@ package com.example.cicknime;
 
 import java.io.Serializable;
 
-public class AnimeModel implements Serializable {
-    private String title, synopsis, studios, aired, duration, type, videoId;
-    private String[] genres;
-    private int poster;
+import android.os.Parcel;
+import android.os.Parcelable;
 
-    private double score;
+public class AnimeModel implements Serializable, Parcelable {
+    private String title, synopsis, studios, aired, duration, type, videoId, genres;
+    // private String[] genres;
+    private int poster;
+    private float score;
+
+    public AnimeModel() {
+    }
+
+    protected AnimeModel(Parcel in) {
+        title = in.readString();
+        synopsis = in.readString();
+        studios = in.readString();
+        aired = in.readString();
+        duration = in.readString();
+        type = in.readString();
+        videoId = in.readString();
+        genres = in.readString();
+        poster = in.readInt();
+        score = in.readFloat();
+        // genres = in.createStringArray();
+    }
+
+    public static final Creator<AnimeModel> CREATOR = new Creator<AnimeModel>() {
+        @Override
+        public AnimeModel createFromParcel(Parcel in) {
+            return new AnimeModel(in);
+        }
+
+        @Override
+        public AnimeModel[] newArray(int size) {
+            return new AnimeModel[size];
+        }
+    };
 
     public String getTitle() {
         return title;
@@ -57,11 +88,11 @@ public class AnimeModel implements Serializable {
         this.type = type;
     }
 
-    public String[] getGenres() {
+    public String getGenres() {
         return genres;
     }
 
-    public void setGenres(String[] genres) {
+    public void setGenres(String genres) {
         this.genres = genres;
     }
 
@@ -81,11 +112,31 @@ public class AnimeModel implements Serializable {
         this.poster = poster;
     }
 
-    public double getScore() {
+    public float getScore() {
         return score;
     }
 
-    public void setScore(double score) {
+    public void setScore(float score) {
         this.score = score;
+    }
+
+    @Override
+    public int describeContents() {
+        return 0;
+    }
+
+    @Override
+    public void writeToParcel(Parcel dest, int flags) {
+        dest.writeString(title);
+        dest.writeString(synopsis);
+        dest.writeString(studios);
+        dest.writeString(aired);
+        dest.writeString(duration);
+        dest.writeString(type);
+        dest.writeString(videoId);
+        dest.writeString(genres);
+        dest.writeInt(poster);
+        dest.writeFloat(score);
+        // dest.writeStringArray(genres);
     }
 }
