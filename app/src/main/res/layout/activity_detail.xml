@@ -226,6 +226,7 @@
                             android:layout_marginTop="4dp"
                             android:fontFamily="@font/poppins"
                             android:textColor="@color/textOrIconColor"
+                            android:textSize="12sp"
                             tools:text="6.87" />
 
                     </LinearLayout>
@@ -251,7 +252,8 @@
                     android:layout_marginHorizontal="16dp"
                     android:layout_marginBottom="16dp"
                     android:text="@string/watch_pv"
-                    app:icon="@drawable/ic_baseline_movie_24"
+                    app:icon="@drawable/ic_baseline_play_arrow_24"
+                    app:iconGravity="textStart"
                     app:layout_constraintBottom_toBottomOf="parent"
                     app:layout_constraintEnd_toStartOf="@+id/btn_favorite"
                     app:layout_constraintStart_toStartOf="parent"
@@ -266,6 +268,7 @@
                     android:layout_marginBottom="16dp"
                     android:text="@string/favorite"
                     app:icon="@drawable/ic_baseline_favorite_border_24"
+                    app:iconGravity="textStart"
                     app:layout_constraintBottom_toBottomOf="parent"
                     app:layout_constraintEnd_toEndOf="parent"
                     app:layout_constraintStart_toEndOf="@id/btn_watch"

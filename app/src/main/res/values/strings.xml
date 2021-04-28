@@ -20,4 +20,5 @@
     <string name="related_anime">related anime</string>
     <string name="watch_pv">watch pv</string>
     <string name="preview">preview</string>
+    <string name="score">Score : </string>
 </resources>
