@@ -280,7 +280,7 @@
             <View
                 android:id="@+id/v_separator_0"
                 android:layout_width="match_parent"
-                android:layout_height="8dp"
+                android:layout_height="6dp"
                 android:background="@color/backgroundColor"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintStart_toStartOf="parent"
@@ -329,7 +329,7 @@
             <View
                 android:id="@+id/v_separator_1"
                 android:layout_width="match_parent"
-                android:layout_height="8dp"
+                android:layout_height="6dp"
                 android:layout_marginTop="16dp"
                 android:background="@color/backgroundColor"
                 app:layout_constraintEnd_toEndOf="parent"
@@ -365,7 +365,7 @@
             <View
                 android:id="@+id/v_separator_2"
                 android:layout_width="match_parent"
-                android:layout_height="8dp"
+                android:layout_height="6dp"
                 android:layout_marginTop="16dp"
                 android:background="@color/backgroundColor"
                 app:layout_constraintEnd_toEndOf="parent"
@@ -394,10 +394,10 @@
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:orientation="vertical"
+                    app:animAlphaStart="1"
                     app:layout_constraintStart_toStartOf="parent"
                     app:layout_constraintTop_toBottomOf="@id/tv_synopsis_title"
-                    expandableTextView:animDuration="300"
-                    expandableTextView:maxCollapsedLines="4">
+                    expandableTextView:animDuration="500">
 
                     <TextView
                         android:id="@+id/expandable_text"
@@ -409,7 +409,8 @@
                         android:layout_height="wrap_content"
                         android:layout_gravity="end|bottom"
                         android:background="@android:color/transparent"
-                        android:paddingVertical="8dp"
+                        android:paddingStart="16dp"
+                        android:paddingTop="16dp"
                         tools:ignore="ContentDescription,RtlSymmetry" />
 
                 </com.ms.square.android.expandabletextview.ExpandableTextView>
@@ -419,7 +420,7 @@
             <View
                 android:id="@+id/v_separator_3"
                 android:layout_width="match_parent"
-                android:layout_height="8dp"
+                android:layout_height="6dp"
                 android:layout_marginTop="16dp"
                 android:background="@color/backgroundColor"
                 app:layout_constraintEnd_toEndOf="parent"
